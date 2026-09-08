@@ -2,10 +2,11 @@ backend:
   name: github
   repo: water9626/download-web
   branch: main
+  auth_endpoint: /.netlify/identity/callback
 
 media_library:
   name: github
-  folder: /static/uploads
+
 
 collections:
   - name: site_settings
