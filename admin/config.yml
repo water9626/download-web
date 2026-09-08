@@ -2,6 +2,8 @@ backend:
   name: github
   repo: water9626/download-web
   branch: main
+  base_url: https://decapbridge.com
+  auth_endpoint: /auth
 
 media_folder: static/media
 public_folder: /media
