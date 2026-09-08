@@ -8,6 +8,18 @@ media_library:
   folder: /static/uploads
 
 collections:
+  - name: site_settings
+    label: 网站全局设置
+    files:
+      - name: config
+        label: 页脚联系信息
+        file: /site-settings.json
+        fields:
+          - { label: "业务邮箱", name: "email", widget: "string" }
+          - { label: "WhatsApp号码(带+86)", name: "whatsapp", widget: "string" }
+          - { label: "WhatsApp显示文本", name: "whatsapp_text", widget: "string" }
+          - { label: "版权声明文字", name: "copyright", widget: "string" }
+
   - name: products
     label: 首页销售产品
     files:
