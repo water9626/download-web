@@ -2,30 +2,17 @@ backend:
   name: github
   repo: water9626/download-web
   branch: main
-media_folder: "r2-upload"
-public_folder: ""
-
+media_library:
+  name: github
+  folder: /static/uploads
 collections:
   - name: products
-    label: Products
-    file: "products.json"
-    media_library:
-      config:
-        r2_bucket_url: "https://pub-xxxx.r2.dev"
+    label: 产品
+    folder: /content/products
+    create: true
+    slug: '{{title}}'
     fields:
-      - {label: "产品名称", name: "name", widget: "string"}
-      - {label: "分类", name: "category", widget: "string"}
-      - {label: "描述", name: "desc", widget: "string"}
-      - {label: "图片R2链接", name: "image", widget: "string"}
-      - label: "规格参数"
-        name: "spec"
-        widget: "list"
-        fields:
-          - {label:"参数名", name:"name", widget:"string"}
-          - {label:"参数值", name:"value", widget:"string"}
-      - label: "视频教程"
-        name: "videoUrlList"
-        widget: "list"
-        fields:
-          - {label:"标题", name:"title", widget:"string"}
-          - {label:"链接", name:"url", widget:"string"}
+      - { label: "产品名称", name: "title", widget: "string" }
+      - { label: "简介", name: "desc", widget: "text" }
+      - { label: "价格", name: "price", widget: "string" }
+      - { label: "产品图片", name: "image", widget: "image" }
