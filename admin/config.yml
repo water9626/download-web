@@ -2,7 +2,6 @@ backend:
   name: github
   repo: water9626/download-web
   branch: main
-  auth_endpoint: /.netlify/identity/callback
 
 media_folder: static/media
 public_folder: /media
