@@ -9,7 +9,7 @@ media_library:
 
 collections:
   - name: products
-    label: 产品
+    label: 首页销售产品
     files:
       - name: product_list
         label: 产品列表
@@ -19,8 +19,54 @@ collections:
             name: items
             widget: list
             fields:
-              - { label: "产品名称", name: "title", widget: "string" }
-              - { label: "简介", name: "desc", widget: "text" }
-              - { label: "价格", name: "price", widget: "string" }
-              - { label: "分类", name: "category", widget: "string" }
+              - { label: "产品名称", name: "name", widget: "string" }
+              - { label: "简短描述", name: "desc", widget: "text" }
+              - { label: "售价", name: "price", widget: "string" }
+              - { label: "分类key(sfp/switch/onu)", name: "category", widget: "string" }
               - { label: "产品图片", name: "image", widget: "image" }
+
+  - name: support
+    label: 技术支持‑设备库
+    files:
+      - name: support_list
+        label: 设备教程固件列表
+        file: /support.json
+        fields:
+          - label: 设备数组
+            name: items
+            widget: list
+            fields:
+              - { label: "设备分类名称", name: "category", widget: "string" }
+              - { label: "设备型号名称", name: "name", widget: "string" }
+              - { label: "设备简介", name: "desc", widget: "text" }
+              - { label: "设备图片", name: "image", widget: "image" }
+              - label: 规格参数
+                name: spec
+                widget: list
+                fields:
+                  - { label: "参数名", name: "name", widget: "string" }
+                  - { label: "参数值", name: "value", widget: "string" }
+              - label: 教程视频列表
+                name: videoUrlList
+                widget: list
+                fields:
+                  - { label: "视频标题", name: "title", widget: "string" }
+                  - { label: "视频URL", name: "url", widget: "string" }
+              - label: PDF文档
+                name: pdfList
+                widget: list
+                fields:
+                  - { label: "文档标题", name: "title", widget: "string" }
+                  - { label: "文档链接", name: "url", widget: "string" }
+              - label: 软件下载
+                name: softwareList
+                widget: list
+                fields:
+                  - { label: "软件标题", name: "title", widget: "string" }
+                  - { label: "下载链接", name: "url", widget: "string" }
+              - label: 固件下载
+                name: firmwareList
+                widget: list
+                fields:
+                  - { label: "固件标题", name: "title", widget: "string" }
+                  - { label: "下载链接", name: "url", widget: "string" }
