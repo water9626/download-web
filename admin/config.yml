@@ -4,8 +4,8 @@ backend:
   branch: main
   auth_endpoint: /.netlify/identity/callback
 
-# media_library:
-#   name: github
+media_folder: static/media
+public_folder: /media
 
 collections:
   - name: site_settings
