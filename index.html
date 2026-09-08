@@ -1,130 +1,228 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-<meta charset="UTF‑8">
-<meta name="viewport" content="width=device‑width, initial‑scale=1.0">
-<title>Products | PON Hardware Resource</title>
-<link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>光通信设备</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        body {
+            background-color: #f7f9fc;
+            color: #222;
+        }
+
+        /* 顶部导航栏 */
+        .category-nav {
+            background: #ffffff;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            margin-bottom: 28px;
+        }
+        .category-nav .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 14px 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .category-item {
+            padding: 9px 22px;
+            border-radius: 8px;
+            background-color: #f4f7fb;
+            color: #222;
+            text-decoration: none;
+            transition: 0.22s ease;
+        }
+        .category-item.active {
+            background-color: #1f56d3;
+            color: #ffffff;
+        }
+        .category-item:hover:not(.active) {
+            background-color: #e2e8f0;
+        }
+
+        /* 主内容 */
+        .main-content {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 20px;
+            min-height: calc(100vh - 220px);
+        }
+
+        /* 产品网格 */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 22px;
+            margin-bottom: 40px;
+        }
+        .product-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+        .product-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .product-body {
+            padding: 14px;
+        }
+        .product-title {
+            font-size:16px;
+            font-weight:500;
+            margin-bottom:6px;
+        }
+        .product-desc {
+            font-size:13px;
+            color:#666;
+            margin-bottom:8px;
+        }
+        .product-price {
+            font-size:15px;
+            color:#d32f2f;
+            font-weight:bold;
+        }
+
+        /* 页脚 */
+        .page-footer {
+            background-color: #1a2436;
+            color: #cbd5e1;
+            padding: 32px 20px;
+            margin-top: 60px;
+        }
+        .footer-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+        .footer-contact p {
+            margin: 8px 0;
+            font-size: 15px;
+        }
+        .footer-contact a {
+            color: #4ade80;
+            text-decoration: none;
+        }
+        .footer-contact a:hover {
+            text-decoration: underline;
+        }
+        .footer-copyright {
+            margin-top:16px;
+            font-size:13px;
+            color:#94a3b8;
+        }
+
+        /* 移动端 */
+        @media (max-width:768px) {
+            .category-nav .container {
+                gap:8px;
+            }
+            .category-item {
+                padding:7px 14px;
+                font-size:14px;
+            }
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px,1fr));
+            }
+        }
+    </style>
 </head>
 <body>
-<header class="site‑header">
-  <div class="header‑inner">
-    <div class="brand">PON‑Hardware</div>
-    <nav class="main‑nav">
-      <a href="index.html" class="active">Products</a>
-      <a href="download.html">Download</a>
-      <a href="support.html">Support</a>
-    </nav>
-  </div>
-</header>
 
-<div class="container">
-  <aside class="sidebar">
-    <h2>Categories</h2>
-    <input id="searchInput" placeholder="Search product...">
-    <ul id="categoryList"></ul>
-  </aside>
-  <main class="main‑content">
-    <div class="page‑intro">
-      <h1>Hardware Products</h1>
-      <p>Hardware overview, specifications and video tutorials.</p>
+<!-- 顶部分类导航 -->
+<div class="category-nav">
+    <div class="container">
+        <a class="category-item active" href="#all">全部</a>
+        <a class="category-item" href="#sfp">SFP模块</a>
+        <a class="category-item" href="#switch">交换机</a>
+        <a class="category-item" href="#onu">ONU设备</a>
+        <a class="category-item" href="support.html">技术支持</a>
+        <a class="category-item" href="#contact">联系我们</a>
     </div>
-    <div id="productContainer"></div>
-  </main>
 </div>
 
-<footer class="site‑footer">
-  <div class="footer‑inner">
-    <p>© 2026 PON‑Hardware. All resources for reference only.</p>
-  </div>
+<!-- 产品主体区域 -->
+<main class="main-content">
+    <div class="product-grid" id="productContainer">
+        <!-- JS渲染产品卡片 -->
+    </div>
+</main>
+
+<!-- 页脚：WhatsApp、邮箱 -->
+<footer class="page-footer">
+    <div class="footer-inner">
+        <div class="footer-contact">
+            <p>📧 Email：sales@example.com</p>
+            <p>💬 WhatsApp：<a href="https://wa.me/8613800138000" target="_blank">+86 138 0013 8000</a></p>
+        </div>
+        <div class="footer-copyright">
+            © 2026 All rights reserved
+        </div>
+    </div>
 </footer>
 
 <script>
 let allProducts = [];
-let activeCategory = "";
-const searchInput = document.querySelector("#searchInput");
-const categoryListEl = document.querySelector("#categoryList");
-const productContainer = document.querySelector("#productContainer");
 
-fetch("./products.json")
-.then(res=>res.json())
-.then(data=>{
-  allProducts = data;
-  renderSidebar();
-  renderProductList();
+// 加载products.json
+async function loadProducts(){
+    const res = await fetch("./products.json");
+    const data = await res.json();
+    allProducts = data.items || [];
+    renderProduct("all");
+}
+
+// 渲染产品
+function renderProduct(filterCat){
+    const container = document.getElementById("productContainer");
+    let list = allProducts;
+    if(filterCat !== "all"){
+        list = allProducts.filter(item=> item.category === filterCat);
+    }
+    container.innerHTML = "";
+    list.forEach(p=>{
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
+            <img src="${p.image||''}" alt="${p.title}">
+            <div class="product-body">
+                <div class="product-title">${p.title}</div>
+                <div class="product-desc">${p.desc||""}</div>
+                <div class="product-price">${p.price||""}</div>
+            </div>
+        `;
+        container.appendChild(card);
+    })
+}
+
+// 筛选函数
+function filterProduct(catKey){
+    renderProduct(catKey);
+}
+
+// 导航点击事件
+document.querySelectorAll('.category-item').forEach(el => {
+    el.addEventListener('click', e => {
+        const href = el.getAttribute("href");
+        // 外链页面直接跳转，不执行筛选
+        if(href.startsWith("#")){
+            e.preventDefault();
+            document.querySelectorAll('.category-item').forEach(i => i.classList.remove('active'));
+            el.classList.add('active');
+            const catKey = href.replace('#','');
+            filterProduct(catKey);
+        }
+    })
 })
 
-function renderSidebar(){
-  let html = `<li class="cat‑item ${activeCategory===''?'active':''}" data‑cat="">All Products</li>`;
-  const categories = [...new Set(allProducts.map(p=>p.category))];
-  categories.forEach(cat=>{
-    html += `<li class="cat‑item ${activeCategory===cat?'active':''}" data‑cat="${cat}">${cat}</li>`;
-  })
-  categoryListEl.innerHTML = html;
-  document.querySelectorAll(".cat‑item").forEach(el=>{
-    el.onclick = ()=>{
-      activeCategory = el.dataset.cat;
-      renderSidebar();
-      renderProductList();
-    }
-  })
-}
-
-function renderProductList(){
-  const kw = searchInput.value.toLowerCase();
-  const filtered = allProducts.filter(p=>{
-    const mkw = p.name.toLowerCase().includes(kw) || p.desc.toLowerCase().includes(kw);
-    const mcat = activeCategory === "" || p.category === activeCategory;
-    return mkw && mcat;
-  })
-  let html = "";
-  filtered.forEach(prod=>{
-    let imgHtml = "";
-    if(prod.image && prod.image!==""){
-      imgHtml = `<img src="${prod.image}" alt="${prod.name}" class="prod‑img">`;
-    }else{
-      imgHtml = `<div class="prod‑img‑placeholder">No Image</div>`;
-    }
-
-    let specHtml = "";
-    if(prod.spec && prod.spec.length>0){
-      specHtml += `<table class="spec‑table"><tbody>`;
-      prod.spec.forEach(s=>{
-        specHtml += `<tr><th>${s.name}</th><td>${s.value}</td></tr>`;
-      })
-      specHtml += `</tbody></table>`;
-    }
-
-    let videoHtml = "";
-    if(prod.videoUrlList && prod.videoUrlList.length>0){
-      videoHtml += `<div class="link‑group"><div class="group‑title">📹 Video Tutorials</div><div class="link‑row">`;
-      prod.videoUrlList.forEach(item=>{
-        videoHtml += `<a target="_blank" href="${item.url}" class="link‑btn">${item.title}</a>`;
-      })
-      videoHtml += `</div></div>`;
-    }
-
-    html += `
-    <div class="product‑card">
-      <div class="card‑row">
-        <div class="card‑img">${imgHtml}</div>
-        <div class="card‑body">
-          <h3>${prod.name}</h3>
-          <div class="cat‑label">${prod.category}</div>
-          <p class="desc">${prod.desc}</p>
-          ${specHtml}
-        </div>
-      </div>
-      <div class="card‑links">
-        ${videoHtml}
-      </div>
-    </div>
-    `
-  })
-  productContainer.innerHTML = html || "<p class=\"no‑result\">No products found.</p>";
-}
-
-searchInput.addEventListener("input", renderProductList);
+window.onload = loadProducts;
 </script>
 </body>
 </html>
