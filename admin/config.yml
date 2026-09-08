@@ -10,7 +10,6 @@ media_library:
 collections:
   - name: products
     label: 产品
-    # 单文件模式，全部产品写入根目录products.json
     files:
       - name: product_list
         label: 产品列表
@@ -23,4 +22,5 @@ collections:
               - { label: "产品名称", name: "title", widget: "string" }
               - { label: "简介", name: "desc", widget: "text" }
               - { label: "价格", name: "price", widget: "string" }
+              - { label: "分类", name: "category", widget: "string" }
               - { label: "产品图片", name: "image", widget: "image" }
