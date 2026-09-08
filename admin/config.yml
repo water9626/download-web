@@ -4,9 +4,8 @@ backend:
   branch: main
   auth_endpoint: /.netlify/identity/callback
 
-media_library:
-  name: github
-
+# media_library:
+#   name: github
 
 collections:
   - name: site_settings
@@ -20,7 +19,6 @@ collections:
           - { label: "WhatsApp号码(带+86)", name: "whatsapp", widget: "string" }
           - { label: "WhatsApp显示文本", name: "whatsapp_text", widget: "string" }
           - { label: "版权声明文字", name: "copyright", widget: "string" }
-
   - name: products
     label: 首页销售产品
     files:
@@ -37,7 +35,6 @@ collections:
               - { label: "售价", name: "price", widget: "string" }
               - { label: "分类key(sfp/switch/onu)", name: "category", widget: "string" }
               - { label: "产品图片", name: "image", widget: "image" }
-
   - name: support
     label: 技术支持‑设备库
     files:
