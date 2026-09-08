@@ -1,11 +1,9 @@
 backend:
-  name: github
-  repo: water9626/download-web
-  branch: main
-  base_url: https://decapbridge.com
-  auth_endpoint: /auth
+  name: git-gateway
+
 media_folder: static/media
 public_folder: /media
+
 collections:
   - name: site_settings
     label: 网站全局设置
@@ -18,6 +16,7 @@ collections:
           - { label: "WhatsApp号码(带+86)", name: "whatsapp", widget: "string" }
           - { label: "WhatsApp显示文本", name: "whatsapp_text", widget: "string" }
           - { label: "版权声明文字", name: "copyright", widget: "string" }
+
   - name: products
     label: 首页销售产品
     files:
@@ -34,6 +33,7 @@ collections:
               - { label: "售价", name: "price", widget: "string" }
               - { label: "分类key(sfp/switch/onu)", name: "category", widget: "string" }
               - { label: "产品图片", name: "image", widget: "image" }
+
   - name: support
     label: 技术支持‑设备库
     files:
@@ -49,30 +49,35 @@ collections:
               - { label: "设备型号名称", name: "name", widget: "string" }
               - { label: "设备简介", name: "desc", widget: "text" }
               - { label: "设备图片", name: "image", widget: "image" }
+
               - label: 规格参数
                 name: spec
                 widget: list
                 fields:
                   - { label: "参数名", name: "name", widget: "string" }
                   - { label: "参数值", name: "value", widget: "string" }
+
               - label: 教程视频列表
                 name: videoUrlList
                 widget: list
                 fields:
                   - { label: "视频标题", name: "title", widget: "string" }
                   - { label: "视频URL", name: "url", widget: "string" }
+
               - label: PDF文档
                 name: pdfList
                 widget: list
                 fields:
                   - { label: "文档标题", name: "title", widget: "string" }
                   - { label: "文档链接", name: "url", widget: "string" }
+
               - label: 软件下载
                 name: softwareList
                 widget: list
                 fields:
                   - { label: "软件标题", name: "title", widget: "string" }
                   - { label: "下载链接", name: "url", widget: "string" }
+
               - label: 固件下载
                 name: firmwareList
                 widget: list
