@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF‑8">
+<meta name="viewport" content="width=device‑width, initial‑scale=1.0">
+<title>Products | PON Hardware Resource</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="site‑header">
+  <div class="header‑inner">
+    <div class="brand">PON‑Hardware</div>
+    <nav class="main‑nav">
+      <a href="index.html" class="active">Products</a>
+      <a href="download.html">Download</a>
+      <a href="support.html">Support</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <aside class="sidebar">
+    <h2>Categories</h2>
+    <input id="searchInput" placeholder="Search product...">
+    <ul id="categoryList"></ul>
+  </aside>
+  <main class="main‑content">
+    <div class="page‑intro">
+      <h1>Hardware Products</h1>
+      <p>Hardware overview, specifications and video tutorials.</p>
+    </div>
+    <div id="productContainer"></div>
+  </main>
+</div>
+
+<footer class="site‑footer">
+  <div class="footer‑inner">
+    <p>© 2026 PON‑Hardware. All resources for reference only.</p>
+  </div>
+</footer>
+
+<script>
+let allProducts = [];
+let activeCategory = "";
+const searchInput = document.querySelector("#searchInput");
+const categoryListEl = document.querySelector("#categoryList");
+const productContainer = document.querySelector("#productContainer");
+
+fetch("./products.json")
+.then(res=>res.json())
+.then(data=>{
+  allProducts = data;
+  renderSidebar();
+  renderProductList();
+})
+
+function renderSidebar(){
+  let html = `<li class="cat‑item ${activeCategory===''?'active':''}" data‑cat="">All Products</li>`;
+  const categories = [...new Set(allProducts.map(p=>p.category))];
+  categories.forEach(cat=>{
+    html += `<li class="cat‑item ${activeCategory===cat?'active':''}" data‑cat="${cat}">${cat}</li>`;
+  })
+  categoryListEl.innerHTML = html;
+  document.querySelectorAll(".cat‑item").forEach(el=>{
+    el.onclick = ()=>{
+      activeCategory = el.dataset.cat;
+      renderSidebar();
+      renderProductList();
+    }
+  })
+}
+
+function renderProductList(){
+  const kw = searchInput.value.toLowerCase();
+  const filtered = allProducts.filter(p=>{
+    const mkw = p.name.toLowerCase().includes(kw) || p.desc.toLowerCase().includes(kw);
+    const mcat = activeCategory === "" || p.category === activeCategory;
+    return mkw && mcat;
+  })
+  let html = "";
+  filtered.forEach(prod=>{
+    let imgHtml = "";
+    if(prod.image && prod.image!==""){
+      imgHtml = `<img src="${prod.image}" alt="${prod.name}" class="prod‑img">`;
+    }else{
+      imgHtml = `<div class="prod‑img‑placeholder">No Image</div>`;
+    }
+
+    let specHtml = "";
+    if(prod.spec && prod.spec.length>0){
+      specHtml += `<table class="spec‑table"><tbody>`;
+      prod.spec.forEach(s=>{
+        specHtml += `<tr><th>${s.name}</th><td>${s.value}</td></tr>`;
+      })
+      specHtml += `</tbody></table>`;
+    }
+
+    let videoHtml = "";
+    if(prod.videoUrlList && prod.videoUrlList.length>0){
+      videoHtml += `<div class="link‑group"><div class="group‑title">📹 Video Tutorials</div><div class="link‑row">`;
+      prod.videoUrlList.forEach(item=>{
+        videoHtml += `<a target="_blank" href="${item.url}" class="link‑btn">${item.title}</a>`;
+      })
+      videoHtml += `</div></div>`;
+    }
+
+    html += `
+    <div class="product‑card">
+      <div class="card‑row">
+        <div class="card‑img">${imgHtml}</div>
+        <div class="card‑body">
+          <h3>${prod.name}</h3>
+          <div class="cat‑label">${prod.category}</div>
+          <p class="desc">${prod.desc}</p>
+          ${specHtml}
+        </div>
+      </div>
+      <div class="card‑links">
+        ${videoHtml}
+      </div>
+    </div>
+    `
+  })
+  productContainer.innerHTML = html || "<p class=\"no‑result\">No products found.</p>";
+}
+
+searchInput.addEventListener("input", renderProductList);
+</script>
+</body>
+</html>

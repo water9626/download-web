@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF‑8">
+<meta name="viewport" content="width=device‑width, initial‑scale=1.0">
+<title>Download Center | PON Hardware Resource</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="site‑header">
+  <div class="header‑inner">
+    <div class="brand">PON‑Hardware</div>
+    <nav class="main‑nav">
+      <a href="index.html">Products</a>
+      <a href="download.html" class="active">Download</a>
+      <a href="support.html">Support</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container download‑container">
+  <main class="main‑content full‑width">
+    <div class="page‑intro">
+      <h1>Download Center</h1>
+      <p>Collect all firmware, software tools and documents.</p>
+    </div>
+    <div id="downloadWrap"></div>
+  </main>
+</div>
+
+<footer class="site‑footer">
+  <div class="footer‑inner">
+    <p>© 2026 PON‑Hardware. All resources for reference only.</p>
+  </div>
+</footer>
+
+<script>
+let allProducts = [];
+const downloadWrap = document.querySelector("#downloadWrap");
+fetch("./products.json")
+.then(res=>res.json())
+.then(data=>{
+  allProducts = data;
+  renderDownload();
+})
+
+function renderDownload(){
+  let videos = [], pdfs = [], softs = [], firmwares = [];
+  allProducts.forEach(p=>{
+    if(p.videoUrlList) p.videoUrlList.forEach(i=>videos.push({prod:p.name,...i}));
+    if(p.pdfList) p.pdfList.forEach(i=>pdfs.push({prod:p.name,...i}));
+    if(p.softwareList) p.softwareList.forEach(i=>softs.push({prod:p.name,...i}));
+    if(p.firmwareList) p.firmwareList.forEach(i=>firmwares.push({prod:p.name,...i}));
+  })
+
+  let html = "";
+  html += renderBlock("📹 Video Tutorials", videos);
+  html += renderBlock("📄 PDF Documents", pdfs);
+  html += renderBlock("⚙ Software & Tools", softs);
+  html += renderBlock("🔧 Firmware", firmwares);
+  downloadWrap.innerHTML = html;
+}
+
+function renderBlock(title, arr){
+  if(!arr || arr.length===0) return "";
+  let h = `<div class="download‑block"><h2 class="block‑title">${title}</h2><div class="link‑row">`;
+  arr.forEach(item=>{
+    h += `<a target="_blank" href="${item.url}" class="download‑link‑btn">${item.title} <span class="src‑tag">[${item.prod}]</span></a>`;
+  })
+  h += `</div></div>`;
+  return h;
+}
+</script>
+</body>
+</html>
