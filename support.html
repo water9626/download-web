@@ -136,23 +136,34 @@
 
 <footer class="page-footer" id="contact">
     <div class="footer-inner">
-        <div class="footer-contact">
-            <p>📧 Email：sales@example.com</p>
-            <p>💬 WhatsApp：<a href="https://wa.me/8613800138000" target="_blank">+86 138 0013 8000</a></p>
-        </div>
-        <div class="footer-copyright">
-            © 2026 All rights reserved
-        </div>
+        <div class="footer-contact" id="footerContact"></div>
+        <div class="footer-copyright" id="footerCopyright"></div>
     </div>
 </footer>
 
 <script>
 let supportList = [];
-async function loadSupportData(){
+let siteConfig = {};
+
+async function loadAll(){
+    const settingsRes = await fetch("./site-settings.json");
+    siteConfig = await settingsRes.json();
+    renderFooter();
+
     const res = await fetch("./support.json");
     const data = await res.json();
     supportList = data.items || [];
     renderSupportPage();
+}
+
+function renderFooter(){
+    const contactDom = document.getElementById("footerContact");
+    const copyDom = document.getElementById("footerCopyright");
+    contactDom.innerHTML = `
+        <p>📧 Email：${siteConfig.email||""}</p>
+        <p>💬 WhatsApp：<a href="https://wa.me/${siteConfig.whatsapp||""}" target="_blank">${siteConfig.whatsapp_text||""}</a></p>
+    `;
+    copyDom.innerText = siteConfig.copyright||"";
 }
 
 function renderSupportPage(){
@@ -189,7 +200,7 @@ function renderSupportPage(){
     })
 }
 
-window.onload = loadSupportData;
+window.onload = loadAll;
 </script>
 </body>
 </html>
