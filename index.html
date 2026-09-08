@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>光通信设备</title>
+    <title>Optical Communication Equipment Supplier</title>
     <style>
         * {
             margin: 0;
@@ -15,8 +15,6 @@
             background-color: #f7f9fc;
             color: #222;
         }
-
-        /* 顶部导航栏 */
         .category-nav {
             background: #ffffff;
             box-shadow: 0 1px 4px rgba(0,0,0,0.08);
@@ -45,16 +43,12 @@
         .category-item:hover:not(.active) {
             background-color: #e2e8f0;
         }
-
-        /* 主内容 */
         .main-content {
             max-width: 1240px;
             margin: 0 auto;
             padding: 0 20px;
-            min-height: calc(100vh - 220px);
+            min-height: calc(100vh - 260px);
         }
-
-        /* 产品网格 */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -90,8 +84,6 @@
             color:#d32f2f;
             font-weight:bold;
         }
-
-        /* 页脚 */
         .page-footer {
             background-color: #1a2436;
             color: #cbd5e1;
@@ -118,8 +110,6 @@
             font-size:13px;
             color:#94a3b8;
         }
-
-        /* 移动端 */
         @media (max-width:768px) {
             .category-nav .container {
                 gap:8px;
@@ -136,7 +126,6 @@
 </head>
 <body>
 
-<!-- 顶部分类导航 -->
 <div class="category-nav">
     <div class="container">
         <a class="category-item active" href="#all">全部</a>
@@ -148,38 +137,44 @@
     </div>
 </div>
 
-<!-- 产品主体区域 -->
 <main class="main-content">
-    <div class="product-grid" id="productContainer">
-        <!-- JS渲染产品卡片 -->
-    </div>
+    <div class="product-grid" id="productContainer"></div>
 </main>
 
-<!-- 页脚：WhatsApp、邮箱 -->
-<footer class="page-footer">
+<footer class="page-footer" id="contact">
     <div class="footer-inner">
-        <div class="footer-contact">
-            <p>📧 Email：272716542@qq.com</p>
-            <p>💬 WhatsApp：<a href="https://wa.me/8615727789912" target="_blank">+8615727789912</a></p>
-        </div>
-        <div class="footer-copyright">
-            © 2026 All rights reserved
-        </div>
+        <div class="footer-contact" id="footerContact"></div>
+        <div class="footer-copyright" id="footerCopyright"></div>
     </div>
 </footer>
 
 <script>
 let allProducts = [];
+let siteConfig = {};
 
-// 加载products.json
-async function loadProducts(){
-    const res = await fetch("./products.json");
-    const data = await res.json();
-    allProducts = data.items || [];
+async function loadAllData(){
+    //加载全局设置
+    const settingsRes = await fetch("./site-settings.json");
+    siteConfig = await settingsRes.json();
+    renderFooter();
+
+    //加载产品
+    const productRes = await fetch("./products.json");
+    const productData = await productRes.json();
+    allProducts = productData.items || [];
     renderProduct("all");
 }
 
-// 渲染产品
+function renderFooter(){
+    const contactDom = document.getElementById("footerContact");
+    const copyDom = document.getElementById("footerCopyright");
+    contactDom.innerHTML = `
+        <p>📧 Email：${siteConfig.email||""}</p>
+        <p>💬 WhatsApp：<a href="https://wa.me/${siteConfig.whatsapp||""}" target="_blank">${siteConfig.whatsapp_text||""}</a></p>
+    `;
+    copyDom.innerText = siteConfig.copyright||"";
+}
+
 function renderProduct(filterCat){
     const container = document.getElementById("productContainer");
     let list = allProducts;
@@ -191,9 +186,9 @@ function renderProduct(filterCat){
         const card = document.createElement("div");
         card.className = "product-card";
         card.innerHTML = `
-            <img src="${p.image||''}" alt="${p.title}">
+            <img src="${p.image||''}" alt="${p.name}">
             <div class="product-body">
-                <div class="product-title">${p.title}</div>
+                <div class="product-title">${p.name}</div>
                 <div class="product-desc">${p.desc||""}</div>
                 <div class="product-price">${p.price||""}</div>
             </div>
@@ -202,27 +197,24 @@ function renderProduct(filterCat){
     })
 }
 
-// 筛选函数
-function filterProduct(catKey){
-    renderProduct(catKey);
-}
-
-// 导航点击事件
 document.querySelectorAll('.category-item').forEach(el => {
     el.addEventListener('click', e => {
         const href = el.getAttribute("href");
-        // 外链页面直接跳转，不执行筛选
+        if(href.startsWith("http") || href.endsWith(".html")){
+            return;
+        }
         if(href.startsWith("#")){
             e.preventDefault();
+            if(href === "#contact") return;
             document.querySelectorAll('.category-item').forEach(i => i.classList.remove('active'));
             el.classList.add('active');
             const catKey = href.replace('#','');
-            filterProduct(catKey);
+            renderProduct(catKey);
         }
     })
 })
 
-window.onload = loadProducts;
+window.onload = loadAllData;
 </script>
 </body>
 </html>
