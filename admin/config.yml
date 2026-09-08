@@ -4,10 +4,8 @@ backend:
   branch: main
   base_url: https://decapbridge.com
   auth_endpoint: /auth
-
 media_folder: static/media
 public_folder: /media
-
 collections:
   - name: site_settings
     label: 网站全局设置
