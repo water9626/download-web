@@ -4,26 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fibershow</title>
-    <!-- 引入图1风格的设计感标题字体 Rajdhani 和易读正文字体 Inter -->
+    <!-- 引入图1风格的设计感标题字体和易读正文字体 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     
     <style>
-        /* ================= CSS 样式 ================= */
+        /* ================= 基础 CSS 样式 ================= */
         :root {
-            --bg-color: #0d0d0d;
-            --card-bg: #1a1a1a;
-            --text-main: #e6e6e6;
-            --text-muted: #888888;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
             --accent-color: #00bcd4;
-            --header-bg: #000000;
+            --header-bg: rgba(10, 10, 10, 0.95);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
@@ -32,162 +32,149 @@
             flex-direction: column;
         }
 
-        a { color: var(--accent-color); text-decoration: none; transition: opacity 0.3s; }
-        a:hover { opacity: 0.8; }
+        a { color: var(--accent-color); text-decoration: none; transition: 0.3s; }
+        a:hover { text-decoration: underline; }
 
         /* 头部导航 */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 25px 60px;
+            padding: 20px 50px;
             background-color: var(--header-bg);
-            border-bottom: 1px solid #222;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .logo {
-            font-family: 'Rajdhani', sans-serif;
+            font-family: 'Orbitron', sans-serif;
             font-weight: 700;
-            font-size: 26px;
+            font-size: 24px;
             color: var(--accent-color);
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
 
-        nav { display: flex; gap: 40px; }
-        nav a {
-            color: var(--text-muted);
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        nav a:hover, nav a.active { color: var(--accent-color); }
+        nav { display: flex; gap: 30px; }
+        nav a { color: var(--text-main); font-weight: 500; cursor: pointer; }
+        nav a.active { color: var(--accent-color); }
 
         /* 主体内容区 */
         main {
             flex: 1;
-            padding: 50px 60px;
-            max-width: 1400px;
+            padding: 40px 50px;
+            max-width: 1200px;
             margin: 0 auto;
             width: 100%;
         }
 
+        /* 视图切换控制 */
         .view-section { display: none; }
         .view-section.active { display: block; }
 
-        h1, h2, h3 { 
-            font-family: 'Rajdhani', sans-serif; 
-            font-weight: 700;
-            margin-bottom: 15px; 
-        }
-        
-        h1 { font-size: 36px; color: #ffffff; margin-bottom: 10px; }
-        p { color: var(--text-muted); font-size: 14px; margin-bottom: 30px; }
+        h1, h2, h3 { font-family: 'Orbitron', sans-serif; margin-bottom: 15px; }
+        h1 { font-size: 32px; color: var(--accent-color); }
+        p { color: var(--text-muted); margin-bottom: 30px; }
 
-        /* === 主页 (Products) === */
-        .search-container {
-            width: 100%;
-            max-width: 400px;
+        /* === 主页 (Products) 样式 === */
+        /* 顶部容器：左边放标题副标题，右边放搜索框 */
+        .page-top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
             margin-bottom: 50px;
         }
 
+        .page-top-bar h1 { margin-bottom: 10px; }
+        .page-top-bar p { margin-bottom: 0; }
+
         .search-bar {
-            width: 100%;
-            padding: 14px 20px;
+            width: 300px;
+            padding: 12px 20px;
             background: transparent;
             border: 1px solid #333;
-            border-radius: 4px;
+            border-radius: 5px;
             color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            transition: border-color 0.3s;
+            font-family: 'Roboto', sans-serif;
         }
-        .search-bar::placeholder { color: #555; }
+        .search-bar::placeholder { color: #666; }
         .search-bar:focus { outline: none; border-color: var(--accent-color); }
 
+        /* 产品网格容器：设置为 flex 并居中，让分类项位于中上位置 */
         .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center; /* 让卡片在中间对齐 */
         }
 
         .card {
+            width: 300px; /* 固定卡片宽度 */
             background: var(--card-bg);
             padding: 30px;
-            border-radius: 4px;
-            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            border: 1px solid #333;
             display: flex;
             flex-direction: column;
-            transition: border-color 0.3s, background 0.3s;
+            transition: border-color 0.3s;
         }
-        .card:hover { border-color: var(--accent-color); background: #222; }
-        .card h2 { font-size: 24px; color: #fff; margin-bottom: 5px; }
-        .card .category { font-size: 12px; color: #666; margin-bottom: 20px; }
-        .card .desc { flex: 1; margin-bottom: 30px; font-size: 14px; }
+        .card:hover { border-color: var(--accent-color); }
+        .card h2 { font-size: 22px; margin-bottom: 10px; }
+        .card .category { font-size: 14px; color: #666; margin-bottom: 20px; }
+        .card .desc { flex: 1; margin-bottom: 20px; }
         .card .btn {
-            display: block;
+            display: inline-block;
             padding: 12px;
             background: var(--accent-color);
-            color: #000;
+            color: #121212;
             border-radius: 4px;
-            font-weight: 600;
-            font-size: 13px;
+            font-weight: 500;
             text-align: center;
             cursor: pointer;
         }
+        .card .btn:hover { opacity: 0.8; text-decoration: none; }
 
-        /* === 支持与下载页 (Support) === */
+        /* === 支持与下载页 (Support) 样式 === */
         .support-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 40px;
         }
-        .support-item {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 4px;
-            border: 1px solid #2a2a2a;
-        }
-        .support-item h2 { font-size: 26px; color: #fff; margin-bottom: 5px; }
-        .support-item .support-meta { font-size: 13px; color: #666; margin-bottom: 25px; }
-        
-        .support-item h3 { 
-            font-family: 'Inter', sans-serif; 
-            font-size: 14px; 
-            font-weight: 600; 
-            color: #fff; 
-            margin-top: 25px; 
-            margin-bottom: 15px; 
-        }
-        .support-item ul { list-style: none; padding-left: 0; }
-        .support-item li { margin-bottom: 10px; font-size: 13px; display: flex; align-items: flex-start; }
-        .support-item li span { margin-right: 8px; margin-top: 3px; }
+        .support-item h2 { font-size: 20px; color: #fff; margin-bottom: 10px; }
+        .support-item .support-meta { font-size: 13px; color: #666; margin-bottom: 15px; }
+        .support-item h3 { font-family: 'Roboto', sans-serif; font-size: 15px; font-weight: bold; color: var(--accent-color); margin-top: 20px; margin-bottom: 10px; }
+        .support-item ul { list-style: none; }
+        .support-item li { margin-bottom: 8px; font-size: 14px; }
+        .support-item li a { color: var(--text-muted); }
+        .support-item li a:hover { color: var(--accent-color); }
+        .support-item li span { margin-right: 8px; }
 
-        /* === 联系页 (Contact) === */
-        .contact-wrapper { max-width: 600px; }
-        .contact-block { margin-bottom: 40px; padding-bottom: 30px; border-bottom: 1px solid #222; }
-        .contact-block:last-child { border-bottom: none; }
-        .contact-block h3 { 
-            font-family: 'Inter', sans-serif; 
-            font-size: 16px; 
-            font-weight: 600; 
-            color: #fff; 
-            margin-bottom: 15px; 
-        }
-        .contact-block p { margin-bottom: 8px; font-size: 14px; }
+        /* === 联系页 (Contact) 样式 === */
+        .contact-container { max-width: 600px; }
+        .contact-block { margin-bottom: 30px; }
+        .contact-block h3 { font-family: 'Roboto', sans-serif; font-size: 18px; color: #fff; margin-bottom: 10px; }
+        .contact-block p { margin-bottom: 5px; font-size: 15px; }
 
         /* 页脚 */
         footer {
-            padding: 30px;
+            padding: 40px 50px;
             text-align: center;
-            font-size: 12px;
-            color: #444;
-            background: #000;
+            font-size: 13px;
+            color: #555;
+            background: #0a0a0a;
+            margin-top: auto;
         }
+        footer p { margin-bottom: 10px; }
+        footer p:last-child { margin-bottom: 0; }
 
         /* 移动端适配 */
+        @media (max-width: 900px) {
+            .page-top-bar { flex-direction: column; gap: 20px; }
+            .search-bar { width: 100%; }
+        }
         @media (max-width: 768px) {
             header { padding: 20px; flex-direction: column; gap: 20px; }
+            nav { gap: 15px; flex-wrap: wrap; justify-content: center; }
             main { padding: 20px; }
             .support-grid { grid-template-columns: 1fr; }
         }
@@ -209,13 +196,13 @@
     <main>
         <!-- 1. 产品主页 (Products) -->
         <section id="view-products" class="view-section active">
-            <h1>Featured Products</h1>
-            <p>Explore our high-performance optical networking equipment.</p>
-            
-            <div class="search-container">
+            <div class="page-top-bar">
+                <div class="page-header">
+                    <h1>Featured Products</h1>
+                    <p>Explore our high-performance optical networking equipment.</p>
+                </div>
                 <input type="text" id="product-search" class="search-bar" placeholder="Search products...">
             </div>
-            
             <div id="product-grid" class="product-grid"></div>
         </section>
 
@@ -223,13 +210,12 @@
         <section id="view-support" class="view-section">
             <h1>Support & Downloads</h1>
             <p>Access firmware updates, drivers, manuals, and technical documentation for your devices.</p>
-            
             <div id="support-grid" class="support-grid"></div>
         </section>
 
         <!-- 3. 联系页 (Contact Us) -->
         <section id="view-contact" class="view-section">
-            <div class="contact-wrapper">
+            <div class="contact-container">
                 <h1>Contact Us</h1>
                 <p>For any business inquiries, technical support, or after-sales service, please contact us via the following methods:</p>
                 
@@ -256,7 +242,7 @@
 
     <!-- JavaScript 逻辑 -->
     <script>
-        // 完整的产品数据 (基于图3结构)
+        // 完整的产品数据
         const products = [
             {
                 category: "HW-ma5671A SFP ONU",
@@ -293,9 +279,9 @@
                 name: "mini gpon olt SFP",
                 desc: "mini gpon olt SFP",
                 videoUrlList: [
-                    { title: "Set ONU to router mode", url: "https://youtu.be/ckJvqJloSzg" },
-                    { title: "Set ONU to bridge mode", url: "https://youtu.be/QFcUg1Ra1p0" },
-                    { title: "How to Install VOLT Software", url: "https://youtu.be/zTkDRKb20QM" }
+                    { title: "How to set ONU to router mode", url: "https://youtu.be/ckJvqJloSzg" },
+                    { title: "How to set ONU to bridge mode", url: "https://youtu.be/QFcUg1Ra1p0" },
+                    { title: "How to Install VOLT Software (Video)", url: "https://youtu.be/zTkDRKb20QM" }
                 ],
                 softwareList: [
                     { title: "For volt software", url: "https://mega.nz/folder/uopBTQYI#0XRXL0XkLRK3GAoaL8RVkQ" }
@@ -324,7 +310,7 @@
             document.getElementById(`nav-${viewId}`).classList.add('active');
         }
 
-        // 2. 渲染主页卡片 (参考图1)
+        // 2. 渲染主页卡片 (中上位置排列)
         function renderProducts(productList) {
             const grid = document.getElementById('product-grid');
             grid.innerHTML = productList.map(product => `
@@ -332,12 +318,12 @@
                     <h2>${product.name}</h2>
                     <div class="category">${product.category}</div>
                     <div class="desc">${product.desc}</div>
-                    <div onclick="switchView('support')" class="btn">View Details & Downloads</div>
+                    <div class="btn" onclick="switchView('support')">View Details & Downloads</div>
                 </div>
             `).join('');
         }
 
-        // 3. 渲染支持与下载页内容 (参考图3)
+        // 3. 渲染支持与下载页内容 (图3结构)
         function renderSupportPage() {
             const grid = document.getElementById('support-grid');
             grid.innerHTML = products.map(product => {
@@ -376,7 +362,7 @@
             }).join('');
         }
 
-        // 4. 初始化
+        // 4. 初始化运行
         renderProducts(products);
         renderSupportPage();
 
