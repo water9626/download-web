@@ -1,30 +1,56 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>网站后台管理</title>
-  <!-- 必须要有这个脚本，负责弹出Netlify登录窗口，缺失就会出现无效密码框 -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Decap CMS</title>
+  <!-- Decap CMS -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </head>
 <body>
-  <!-- CMS挂载容器，不要修改id -->
-  <div id="nc-root"></div>
-
-  <!-- Decap CMS主程序 -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-
-  <!-- 登录完成后自动跳转回后台页面，Netlify官方要求 -->
-  <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
-  </script>
+<script>
+  CMS.init({config: {
+    backend: {
+      name: "github",
+      repo: "water9626/download-web",
+      branch: "main"
+    },
+    media_folder: "static/uploads",
+    public_folder: "/uploads",
+    collections: [
+      {
+        name: "site_settings",
+        label: "网站基础设置",
+        file: "site-settings.json",
+        fields: [
+          {label: "网站名称", name: "site_name", widget: "string"},
+          {label: "网站简介", name: "site_desc", widget: "text"}
+        ]
+      },
+      {
+        name: "products",
+        label: "产品列表",
+        file: "products.json",
+        fields: [
+          {label: "产品名称", name: "name", widget: "string"},
+          {label: "产品描述", name: "desc", widget: "markdown"},
+          {label: "产品图片", name: "image", widget: "image"},
+          {label: "产品型号", name: "model", widget: "string"},
+          {label: "价格", name: "price", widget: "string"}
+        ]
+      },
+      {
+        name: "support",
+        label: "教程&固件",
+        file: "support.json",
+        fields: [
+          {label: "标题", name: "title", widget: "string"},
+          {label: "内容", name: "content", widget: "markdown"},
+          {label: "附件", name: "file", widget: "file"}
+        ]
+      }
+    ]
+  }});
+</script>
 </body>
 </html>
