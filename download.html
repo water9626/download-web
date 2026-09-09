@@ -1,86 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Center | PON Hardware Support</title>
-    <link rel="stylesheet" href="./style.css">
+    <title>下载 - Fibershow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="site-header">
-        <div class="container header-inner">
-            <div class="brand">PON-Hardware</div>
-            <nav class="main-nav">
-                <a href="index.html">Products</a>
-                <a href="download.html" class="active">Support & Download</a>
-            </nav>
-        </div>
+    <header>
+        <div class="logo">Fibershow</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">产品</a></li>
+                <li><a href="support.html">支持</a></li>
+                <li><a href="download.html">下载</a></li>
+                <li><a href="contact.html">联系我们</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <div class="container main-container">
-        <div class="page-intro">
-            <h1>Technical Support Center</h1>
-            <p>Firmware, Software, Manuals, and Video Tutorials for all models.</p>
-        </div>
-
-        <div id="downloadWrap">
-            <!-- JS 渲染内容 -->
-            <p>Loading resources...</p>
-        </div>
-    </div>
-
-    <footer class="site-footer">
-        <div class="container footer-inner">
-            <p>© 2026 PON-Hardware. All rights reserved.</p>
-            <div class="contact-info">
-                <span>📧 Email: sample@example.com</span>
-                <span>📱 WhatsApp: +86 15727789912</span>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        fetch("./products.json")
-            .then(res => res.json())
-            .then(data => {
-                const wrap = document.getElementById("downloadWrap");
-                let html = "";
-
-                // 1. 视频区
-                let videos = [];
-                data.forEach(p => {
-                    if(p.videoUrlList) p.videoUrlList.forEach(v => videos.push({prod: p.name, ...v}));
-                });
-                if(videos.length > 0) {
-                    html += `<div class="download-section"><h2>📹 Video Tutorials</h2><div class="link-grid">`;
-                    videos.forEach(v => {
-                        html += `<a href="${v.url}" target="_blank" class="dl-item"><span class="title">${v.title}</span><span class="tag">${v.prod}</span></a>`;
-                    });
-                    html += `</div></div>`;
-                }
-
-                // 2. 软件与固件
-                let softs = [], firms = [];
-                data.forEach(p => {
-                    if(p.softwareList) p.softwareList.forEach(s => softs.push({prod: p.name, ...s}));
-                    if(p.firmwareList) p.firmwareList.forEach(f => firms.push({prod: p.name, ...f}));
-                });
-
-                const renderList = (arr, title, icon) => {
-                    if(arr.length === 0) return "";
-                    let h = `<div class="download-section"><h2>${icon} ${title}</h2><div class="link-grid">`;
-                    arr.forEach(i => {
-                        h += `<a href="${i.url}" target="_blank" class="dl-item"><span class="title">${i.title}</span><span class="tag">${i.prod}</span></a>`;
-                    });
-                    h += `</div></div>`;
-                    return h;
-                };
-
-                html += renderList(softs, "Software & Tools", "⚙");
-                html += renderList(firms, "Firmware Updates", "🔧");
-
-                wrap.innerHTML = html || "<p>No resources available yet.</p>";
-            });
-    </script>
+    <main>
+        <h1>软件下载</h1>
+        <p>在这里下载我们产品的专用配置工具和固件。</p>
+        <p>内容正在整理中，敬请期待！</p>
+    </main>
 </body>
 </html>
