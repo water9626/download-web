@@ -1,41 +1,64 @@
 backend:
   name: github
-  repo: water9626/download-web
+  repo: your-username/your-repo-name # 修改为你的 GitHub 用户名/仓库名
   branch: main
-media_folder: "static/uploads"
-public_folder: "/uploads"
 
+media_folder: "images"
+public_folder: "./images"
+
+# 直接编辑 products.json 文件
 collections:
-  - name: "site_settings"
-    label: "网站基础设置"
+  - name: "products_data"
+    label: "Products & Resources"
+    editor:
+      preview: false
     files:
-      - label: "站点配置"
-        name: "site_settings_file"
-        file: "site-settings.json"
+      - file: "products.json"
+        label: "All Products Data"
+        name: "products_json"
         fields:
-          - {label: "网站名称", name: "site_name", widget: "string"}
-          - {label: "网站简介", name: "site_desc", widget: "text"}
+          - label: "Products List
+            name: "products"
+            widget: "list"
+            summary: '{{fields.name}} - {{fields.category}}'
+            fields:
+              - { label: "Category", name: "category", widget: "string" }
+              - { label: "Product Name", name: "name", widget: "string" }
+              - { label: "Short Description", name: "desc", widget: "text" }
+              - { label: "Image Path", name: "image", widget: "image", required: false }
+              
+              # 规格参数
+              - label: "Specifications"
+                name: "spec"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Key", name: "name", widget: "string" }
+                  - { label: "Value", name: "value", widget: "string" }
 
-  - name: "products"
-    label: "产品列表"
-    files:
-      - label: "产品数据"
-        name: "products_file"
-        file: "products.json"
-        fields:
-          - {label: "产品名称", name: "name", widget: "string"}
-          - {label: "产品描述", name: "desc", widget: "markdown"}
-          - {label: "产品图片", name: "image", widget: "image"}
-          - {label: "产品型号", name: "model", widget: "string"}
-          - {label: "价格", name: "price", widget: "string"}
+              # 视频列表
+              - label: "Video Tutorials"
+                name: "videoUrlList"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
 
-  - name: "support"
-    label: "教程&固件"
-    files:
-      - label: "教程固件"
-        name: "support_file"
-        file: "support.json"
-        fields:
-          - {label: "标题", name: "title", widget: "string"}
-          - {label: "内容", name: "content", widget: "markdown"}
-          - {label: "附件", name: "file", widget: "file"}
+              # 软件列表
+              - label: "Software"
+                name: "softwareList"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+
+              # 固件列表
+              - label: "Firmware"
+                name: "firmwareList"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
