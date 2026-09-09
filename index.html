@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fibershow - Products</title>
+    <!-- 引入全局样式 -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- 顶部导航 -->
     <header>
         <div class="logo-container">
-            <div class="logo-text">Fibershow</div>
+            <a href="index.html" class="logo-text">FIBERSHOW</a>
         </div>
         <nav>
             <ul>
@@ -21,16 +23,23 @@
         </nav>
     </header>
 
+    <!-- 主内容区：产品列表 -->
     <main>
-        <h1 style="text-align: center; margin-bottom: 40px;">Our Professional PON Hardware</h1>
-        <!-- 产品卡片将通过 JavaScript 动态生成在这里 -->
-        <div class="product-grid" id="product-grid"></div>
+        <div class="product-grid" id="product-container">
+            <!-- 这里的产品卡片由 script.js 自动动态生成 -->
+        </div>
     </main>
 
+    <!-- 统一页脚 -->
     <footer>
-        &copy; 2026 Fibershow. All rights reserved.
+        <p>© 2026 Fibershow. All rights reserved.</p>
+        <div class="disclaimer">
+            <div class="disclaimer-title">免责声明</div>
+            <p>本网站所展示的产品图片、规格参数及文字说明仅供参考，不作为最终依据，实际产品请以收到实物为准。我们保留随时更改产品设计和规格的权利，恕不另行通知。任何由于使用本网站信息而造成的直接或间接损失，Fibershow 概不负责。未经授权，严禁转载本站内容。</p>
+        </div>
     </footer>
 
+    <!-- 引入 JS 脚本加载产品数据 -->
     <script src="script.js"></script>
 </body>
 </html>
