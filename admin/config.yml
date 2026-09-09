@@ -1,64 +1,25 @@
 backend:
-  name: github
-  repo: your-username/your-repo-name # 修改为你的 GitHub 用户名/仓库名
+  name: git-gateway
   branch: main
 
 media_folder: "images"
-public_folder: "./images"
+public_folder: "/images"
 
-# 直接编辑 products.json 文件
 collections:
-  - name: "products_data"
-    label: "Products & Resources"
-    editor:
-      preview: false
+  - name: "products"
+    label: "软件与视频展示"
+    folder: "/"
+    create: false
     files:
       - file: "products.json"
-        label: "All Products Data"
+        label: "全部展示数据"
         name: "products_json"
         fields:
-          - label: "Products List
+          - label: "展示列表"
             name: "products"
             widget: "list"
-            summary: '{{fields.name}} - {{fields.category}}'
             fields:
-              - { label: "Category", name: "category", widget: "string" }
-              - { label: "Product Name", name: "name", widget: "string" }
-              - { label: "Short Description", name: "desc", widget: "text" }
-              - { label: "Image Path", name: "image", widget: "image", required: false }
-              
-              # 规格参数
-              - label: "Specifications"
-                name: "spec"
-                widget: "list"
-                required: false
-                fields:
-                  - { label: "Key", name: "name", widget: "string" }
-                  - { label: "Value", name: "value", widget: "string" }
-
-              # 视频列表
-              - label: "Video Tutorials"
-                name: "videoUrlList"
-                widget: "list"
-                required: false
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "URL", name: "url", widget: "string" }
-
-              # 软件列表
-              - label: "Software"
-                name: "softwareList"
-                widget: "list"
-                required: false
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "URL", name: "url", widget: "string" }
-
-              # 固件列表
-              - label: "Firmware"
-                name: "firmwareList"
-                widget: "list"
-                required: false
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "URL", name: "url", widget: "string" }
+              - { label: "名称", name: "name", widget: "string" }
+              - { label: "描述", name: "desc", widget: "text" }
+              - { label: "视频链接", name: "videoUrl", widget: "string", required: false }
+              - { label: "下载链接", name: "downloadUrl", widget: "string", required: false }
