@@ -1,17 +1,14 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fibershow - Support & Download</title>
+    <title>Support & Download - Fibershow</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <header>
-        <div class="logo-container">
-            <a href="index.html" class="logo-text">FIBERSHOW</a>
-        </div>
+        <a href="index.html" class="logo">FIBERSHOW</a>
         <nav>
             <ul>
                 <li><a href="index.html">Products</a></li>
@@ -19,20 +16,40 @@
                 <li><a href="contact.html">Contact Us</a></li>
             </ul>
         </nav>
+        <div class="search-container" style="visibility: hidden;">
+            <input type="text" placeholder="Search...">
+        </div>
     </header>
 
     <main>
-        <h1 style="margin-bottom: 20px;">Support & Download</h1>
-        <p style="color: var(--text-muted); margin-bottom: 30px;">在此处添加您的固件更新、驱动程序或相关技术文档。</p>
+        <h1 class="page-title">Support & Download</h1>
+        <p class="page-desc">Access firmware updates, drivers, manuals, and technical documentation.</p>
+
+        <div class="content-block">
+            <h3>Latest Firmware</h3>
+            <p>Check for the latest firmware versions to ensure optimal performance and security for your device.</p>
+            <ul>
+                <li>MA5671A Series Firmware v2.4.1 (Released Sep 2026)</li>
+                <li>H1s-3/H2-3 GPON Series Firmware v5.1.0 (Released Aug 2026)</li>
+            </ul>
+        </div>
+
+        <div class="content-block">
+            <h3>Drivers & Utilities</h3>
+            <p>Necessary drivers and configuration tools for Windows, macOS, and Linux.</p>
+        </div>
+        
+        <div class="content-block">
+            <h3>User Manuals & Datasheets</h3>
+            <p>Download complete technical documentation, installation guides, and API references.</p>
+        </div>
     </main>
 
     <footer>
-        <p>© 2026 Fibershow. All rights reserved.</p>
-        <div class="disclaimer">
-            <div class="disclaimer-title">免责声明</div>
-            <p>本网站所展示的产品图片、规格参数及文字说明仅供参考，不作为最终依据，实际产品请以收到实物为准。我们保留随时更改产品设计和规格的权利，恕不另行通知。任何由于使用本网站信息而造成的直接或间接损失，Fibershow 概不负责。未经授权，严禁转载本站内容。</p>
+        <div class="footer-content">
+            <p>&copy; 2026 Fibershow. All rights reserved.</p>
+            <p class="disclaimer">Disclaimer: The information provided on this website is for general informational and educational purposes only. All product specifications and downloads are subject to change without notice. Use of this information and downloaded files is at your own risk.</p>
         </div>
     </footer>
-
 </body>
 </html>
