@@ -166,3 +166,126 @@ footer {
 .contact-info span {
     margin: 0 10px;
 }
+/* --- Support & Download 页面样式 --- */
+.support-page-content, .contact-page-content {
+    max-width: 1000px;
+    margin: 80px auto 0;
+    padding: 20px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.support-page-content h1, .contact-page-content h1 {
+    font-family: 'Orbitron', sans-serif;
+    color: #00e5ff;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+}
+
+.support-card {
+    background-color: #111827;
+    border: 1px solid #1e293b;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: left;
+    transition: transform 0.3s;
+}
+
+.support-card:hover {
+    transform: translateY(-5px);
+    border-color: #00e5ff;
+}
+
+.support-card h2 {
+    color: #00e5ff;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.category-tag {
+    color: #94a3b8;
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+}
+
+.desc {
+    color: #cbd5e1;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.resource-block {
+    margin-bottom: 15px;
+}
+
+.resource-block h4 {
+    color: #ffffff;
+    font-size: 1rem;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 5px;
+}
+
+.resource-block ul {
+    list-style: none;
+    padding: 0;
+}
+
+.resource-block li {
+    margin-bottom: 8px;
+}
+
+.link-item {
+    color: #00e5ff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.link-item:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* --- Contact Us 页面样式 --- */
+.contact-info-box {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.info-item {
+    background-color: #111827;
+    border: 1px solid #1e293b;
+    padding: 30px;
+    border-radius: 8px;
+    min-width: 250px;
+}
+
+.info-item h3 {
+    color: #00e5ff;
+    margin-bottom: 10px;
+}
+
+.info-item p {
+    color: #cbd5e1;
+    font-size: 1.1rem;
+}
+
+/* 响应式适配 */
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+    .contact-info-box {
+        flex-direction: column;
+        align-items: center;
+    }
+}
