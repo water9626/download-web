@@ -1,76 +1,65 @@
-:root {
-    --primary: #0f62fe; /* 科技蓝 */
-    --primary-dark: #0043ce;
-    --bg: #f4f7fa;
-    --card-bg: #ffffff;
-    --text: #161616;
-    --text-light: #525252;
-    --border: #e0e0e0;
+/* 全局样式 */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #0a0a0a;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-a { text-decoration: none; color: inherit; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+/* 头部和导航栏 */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: #111;
+    border-bottom: 1px solid #333;
+}
 
-/* Header */
-.site-header { background: #161616; color: #fff; padding: 15px 0; margin-bottom: 30px; }
-.header-inner { display: flex; justify-content: space-between; align-items: center; }
-.brand { font-size: 1.5rem; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
-.main-nav a { color: #aaa; margin-left: 20px; font-size: 0.95rem; transition: 0.2s; }
-.main-nav a:hover, .main-nav a.active { color: #fff; }
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #00d4ff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
 
-/* Intro */
-.page-intro { text-align: center; margin-bottom: 40px; }
-.page-intro h1 { font-size: 2.2rem; color: #161616; margin-bottom: 10px; }
-.page-intro p { color: var(--text-light); font-size: 1.1rem; }
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
 
-/* Filter */
-.filter-bar { text-align: center; margin-bottom: 30px; }
-#searchInput { padding: 12px 20px; width: 100%; max-width: 400px; border: 1px solid var(--border); border-radius: 25px; font-size: 1rem; outline: none; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: 0.2s; }
-#searchInput:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(15, 98, 254, 0.2); }
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
 
-/* Product Grid */
-.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
-.product-card { background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; }
-.product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
+nav a:hover {
+    color: #00d4ff;
+}
 
-.card-image { height: 200px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.card-image img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
-.card-image img:hover { transform: scale(1.05); }
-.no-img { color: #999; }
+/* 主体内容 */
+main {
+    text-align: center;
+    padding: 100px 20px;
+}
 
-.card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
-.cat-tag { background: #edf2ff; color: var(--primary); font-size: 0.75rem; padding: 4px 8px; border-radius: 4px; align-self: flex-start; margin-bottom: 10px; font-weight: 600; }
-.card-body h3 { font-size: 1.25rem; margin-bottom: 8px; color: #161616; }
-.desc { font-size: 0.9rem; color: var(--text-light); margin-bottom: 15px; flex: 1; }
+main h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3em;
+    color: #00d4ff;
+    margin-bottom: 20px;
+}
 
-.specs-preview span { display: inline-block; font-size: 0.8rem; background: #f4f4f4; padding: 2px 6px; border-radius: 3px; margin-right: 4px; margin-bottom: 4px; color: #555; }
-
-.card-actions { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
-.link-btn { padding: 8px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: 500; text-align: center; flex: 1; display: block; transition: 0.2s; }
-.primary { background: var(--primary); color: #fff; }
-.primary:hover { background: var(--primary-dark); }
-.outline { background: #fff; border: 1px solid var(--border); color: var(--text); }
-.outline:hover { border-color: var(--text); background: #f9f9f9; }
-.small { font-size: 0.75rem; padding: 4px 8px; }
-
-/* Download Page */
-.download-section { background: var(--card-bg); padding: 25px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 25px; }
-.download-section h2 { margin-bottom: 20px; color: #161616; border-left: 4px solid var(--primary); padding-left: 12px; }
-.link-grid { display: flex; flex-direction: column; gap: 10px; }
-.dl-item { display: flex; justify-content: space-between; padding: 12px 15px; background: #f9f9f9; border-radius: 8px; border: 1px solid #eee; transition: 0.2s; font-size: 0.95rem; }
-.dl-item:hover { background: #edf2ff; border-color: var(--primary); color: var(--primary-dark); }
-.dl-item .tag { font-size: 0.75rem; background: #ddd; padding: 2px 6px; border-radius: 4px; height: fit-content; }
-
-/* Footer */
-.site-footer { background: #161616; color: #888; padding: 40px 0; margin-top: 60px; font-size: 0.9rem; text-align: center; }
-.contact-info { margin-top: 15px; display: flex; justify-content: center; gap: 20px; }
-.contact-info span { color: #ccc; }
-
-@media (max-width: 768px) {
-    .header-inner { flex-direction: column; gap: 15px; }
-    .main-nav a { margin: 0 10px; }
-    .product-grid { grid-template-columns: 1fr; }
-    .contact-info { flex-direction: column; gap: 10px; }
+main p {
+    font-size: 1.2em;
+    color: #aaa;
 }
