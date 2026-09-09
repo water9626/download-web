@@ -1,27 +1,48 @@
-// script.js - 读取 JSON 数据并渲染到 HTML 页面
+// script.js - 产品加载与搜索功能
 
-document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('product-container');
-    
-    // 只有主页有这个容器才继续执行
-    if (!container) return; 
+document.addEventListener('DOMContentLoaded', function () {
+    const productList = document.getElementById('product-list');
+    const searchInput = document.getElementById('search-input');
 
-    // 读取 products.json 文件
+    // 从 JSON 文件加载产品数据
     fetch('products.json')
         .then(response => response.json())
-        .then(data => {
-            data.forEach(item => {
-                // 创建卡片 HTML
-                const cardHTML = `
-                    <div class="card">
-                        <h3>${item.name}</h3>
-                        <p>${item.desc}</p>
-                        <a href="#" class="btn">View Details & Downloads</a>
-                    </div>
-                `;
-                // 添加到页面中
-                container.innerHTML += cardHTML;
+        .then(products => {
+            // 初始渲染所有产品
+            renderProducts(products);
+
+            // 搜索功能：实时筛选
+            searchInput.addEventListener('input', function (e) {
+                const searchTerm = e.target.value.toLowerCase();
+                const filteredProducts = products.filter(product => 
+                    product.name.toLowerCase().includes(searchTerm) || 
+                    product.model.toLowerCase().includes(searchTerm)
+                );
+                renderProducts(filteredProducts);
             });
         })
         .catch(error => console.error('Error loading products:', error));
+
+    // 渲染产品卡片的函数
+    function renderProducts(products) {
+        productList.innerHTML = ''; // 清空当前列表
+        if (products.length === 0) {
+            productList.innerHTML = '<p style="color: #666;">No products found.</p>';
+            return;
+        }
+
+        products.forEach(product => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            
+            card.innerHTML = `
+                <div>
+                    <h3>${product.name}</h3>
+                    <p>${product.model}</p>
+                </div>
+                <a href="support.html" class="btn">View Details & Downloads</a>
+            `;
+            productList.appendChild(card);
+        });
+    }
 });
