@@ -1,17 +1,14 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fibershow - Contact Us</title>
+    <title>Contact Us - Fibershow</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <header>
-        <div class="logo-container">
-            <a href="index.html" class="logo-text">FIBERSHOW</a>
-        </div>
+        <a href="index.html" class="logo">FIBERSHOW</a>
         <nav>
             <ul>
                 <li><a href="index.html">Products</a></li>
@@ -19,21 +16,40 @@
                 <li><a href="contact.html" class="active">Contact Us</a></li>
             </ul>
         </nav>
+        <div class="search-container" style="visibility: hidden;">
+            <input type="text" placeholder="Search...">
+        </div>
     </header>
 
     <main>
-        <h1 style="margin-bottom: 20px;">Contact Us</h1>
-        <p style="color: var(--text-muted);">如有任何业务需求或售后问题，请通过以下方式联系我们：</p>
-        <!-- 在这里添加您的邮箱、地址或联系表单 -->
+        <h1 class="page-title">Contact Us</h1>
+        <p class="page-desc">For any business inquiries, technical support, or after-sales service, please contact us via the following methods:</p>
+
+        <div class="content-block">
+            <h3>Technical Support</h3>
+            <p>Email: support@fibershow.com</p>
+            <p>Response time: Within 24 hours</p>
+        </div>
+
+        <div class="content-block">
+            <h3>Business & Sales</h3>
+            <p>Email: sales@fibershow.com</p>
+            <p>Phone: +86 10 1234 5678</p>
+            <p>Working hours: Mon-Fri, 9:00 AM - 6:00 PM (UTC+8)</p>
+        </div>
+        
+        <div class="content-block">
+            <h3>Address</h3>
+            <p>Fibershow Technology Co., Ltd.</p>
+            <p>Shenzhen, China</p>
+        </div>
     </main>
 
     <footer>
-        <p>© 2026 Fibershow. All rights reserved.</p>
-        <div class="disclaimer">
-            <div class="disclaimer-title">免责声明</div>
-            <p>本网站所展示的产品图片、规格参数及文字说明仅供参考，不作为最终依据，实际产品请以收到实物为准。我们保留随时更改产品设计和规格的权利，恕不另行通知。任何由于使用本网站信息而造成的直接或间接损失，Fibershow 概不负责。未经授权，严禁转载本站内容。</p>
+        <div class="footer-content">
+            <p>&copy; 2026 Fibershow. All rights reserved.</p>
+            <p class="disclaimer">Disclaimer: The information provided on this website is for general informational and educational purposes only. All product specifications and downloads are subject to change without notice. Use of this information and downloaded files is at your own risk.</p>
         </div>
     </footer>
-
 </body>
 </html>
