@@ -1,107 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PON Hardware Solutions | High Quality Fiber Optic Products</title>
-    <link rel="stylesheet" href="./style.css">
+    <title>Fibershow - 专业光纤解决方案</title>
+    <!-- 引入科技感字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="site-header">
-        <div class="container header-inner">
-            <div class="brand">PON-Hardware</div>
-            <nav class="main-nav">
-                <a href="index.html" class="active">Products</a>
-                <a href="download.html">Support & Download</a>
-            </nav>
-        </div>
+    <header>
+        <div class="logo">Fibershow</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">产品</a></li>
+                <li><a href="support.html">支持</a></li>
+                <li><a href="download.html">下载</a></li>
+                <li><a href="contact.html">联系我们</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Main Content -->
-    <div class="container main-container">
-        <div class="page-intro">
-            <h1>Professional PON Hardware</h1>
-            <p>High-performance SFP ONU, OLT, and Fiber Optic Solutions.</p>
-        </div>
-
-        <!-- 搜索与分类 -->
-        <div class="filter-bar">
-            <input type="text" id="searchInput" placeholder="Search products (e.g., MA5671A)...">
-        </div>
-
-        <!-- 产品列表 -->
-        <div id="productContainer" class="product-grid">
-            <!-- JS 渲染内容 -->
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container footer-inner">
-            <p>© 2026 PON-Hardware. All rights reserved.</p>
-            <div class="contact-info">
-                <span>📧 Email: sample@example.com</span>
-                <span>📱 WhatsApp: +86 15727789912</span>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        let allProducts = [];
-        const productContainer = document.querySelector("#productContainer");
-        const searchInput = document.querySelector("#searchInput");
-
-        fetch("./products.json")
-            .then(res => res.json())
-            .then(data => {
-                allProducts = data;
-                renderProducts(data);
-            });
-
-        function renderProducts(list) {
-            if (list.length === 0) {
-                productContainer.innerHTML = "<p class='no-result'>No products found.</p>";
-                return;
-            }
-            let html = "";
-            list.forEach(prod => {
-                // 提取第一个视频作为演示入口（如果有）
-                const videoLink = prod.videoUrlList && prod.videoUrlList.length > 0 
-                    ? `<a href="${prod.videoUrlList[0].url}" target="_blank" class="link-btn small">🎥 Watch Tutorial</a>` 
-                    : '';
-
-                html += `
-                <div class="product-card">
-                    <div class="card-image">
-                        ${prod.image ? `<img src="${prod.image}" alt="${prod.name}">` : '<div class="no-img">No Image</div>'}
-                    </div>
-                    <div class="card-body">
-                        <span class="cat-tag">${prod.category}</span>
-                        <h3>${prod.name}</h3>
-                        <p class="desc">${prod.desc}</p>
-                        
-                        <div class="specs-preview">
-                            ${prod.spec ? prod.spec.slice(0,2).map(s => `<span>${s.name}: <b>${s.value}</b></span>`).join('') : ''}
-                        </div>
-
-                        <div class="card-actions">
-                            <a href="download.html" class="link-btn outline">🔧 Tech Support</a>
-                            <!-- 这里预留速卖通链接位置，可以在JSON里加一个字段，或者暂时写死 # -->
-                            <a href="#" target="_blank" class="link-btn primary">🛒 Buy on AliExpress</a>
-                        </div>
-                    </div>
-                </div>`;
-            });
-            productContainer.innerHTML = html;
-        }
-
-        // 搜索功能
-        searchInput.addEventListener("input", (e) => {
-            const val = e.target.value.toLowerCase();
-            const filtered = allProducts.filter(p => p.name.toLowerCase().includes(val) || p.desc.toLowerCase().includes(val));
-            renderProducts(filtered);
-        });
-    </script>
+    <main>
+        <h1>欢迎来到 Fibershow</h1>
+        <p>专业的光纤网络硬件与解决方案提供商</p>
+    </main>
 </body>
 </html>
