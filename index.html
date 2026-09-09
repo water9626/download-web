@@ -1,8 +1,36 @@
-    <nav>
-        <ul class="nav-links">
-            <!-- 注意：href 改成了指向对应的 .html 文件 -->
-            <li><a href="index.html" class="active">Products</a></li>
-            <li><a href="support.html">Support & Download</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-    </nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibershow - Products</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <div class="logo-text">Fibershow</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Products</a></li>
+                <li><a href="support.html">Support & Download</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1 style="text-align: center; margin-bottom: 40px;">Our Professional PON Hardware</h1>
+        <!-- 产品卡片将通过 JavaScript 动态生成在这里 -->
+        <div class="product-grid" id="product-grid"></div>
+    </main>
+
+    <footer>
+        &copy; 2026 Fibershow. All rights reserved.
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
