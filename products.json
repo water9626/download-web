@@ -1,25 +1,22 @@
-{
-  "items": [
-    {
-      "name": "10G SFP+ 万兆光模块",
-      "desc": "10G SFP+ 单模双纤 10km",
-      "price": "$22.50",
-      "category": "sfp",
-      "image": "/uploads/sfp10g.jpg"
-    },
-    {
-      "name": "4口2.5G电+2SFP+交换机",
-      "desc": "2.5G以太网交换机",
-      "price": "$89.00",
-      "category": "switch",
-      "image": "/uploads/switch25g.jpg"
-    },
-    {
-      "name": "MA5671A GPON SFP ONU",
-      "desc": "GPON stick 猫棒",
-      "price": "$32.00",
-      "category": "onu",
-      "image": "/uploads/ma5671a.jpg"
-    }
-  ]
-}
+[
+  {
+    "category": "HW-ma5671A SFP ONU",
+    "name": "MA5671A",
+    "desc": "GPON SFP ONU Stick"
+  },
+  {
+    "category": "ODI PONstick",
+    "name": "ODI RTL9601d stick",
+    "desc": "ODI RTL9601d stick"
+  },
+  {
+    "category": "Volt mini olt",
+    "name": "mini gpon olt SFP",
+    "desc": "mini gpon olt SFP"
+  },
+  {
+    "category": "Vsol ONU/Olt",
+    "name": "Vsol ONU/Olt",
+    "desc": "V2801SG/V2801Q/V2802RH/OLT"
+  }
+]
