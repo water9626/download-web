@@ -23,7 +23,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Roboto', 'Microsoft YaHei', sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
@@ -35,7 +35,7 @@
         a { color: var(--accent-color); text-decoration: none; transition: 0.3s; }
         a:hover { text-decoration: underline; }
 
-        /* === 头部导航 === */
+        /* 头部导航 */
         header {
             display: flex;
             justify-content: space-between;
@@ -56,10 +56,14 @@
         }
 
         nav { display: flex; gap: 30px; }
-        nav a { color: var(--text-main); font-weight: 500; cursor: pointer; }
+        nav a {
+            color: var(--text-main);
+            font-weight: 500;
+            cursor: pointer;
+        }
         nav a.active { color: var(--accent-color); }
 
-        /* === 主体内容区 === */
+        /* 主体内容区 */
         main {
             flex: 1;
             padding: 40px 50px;
@@ -68,48 +72,60 @@
             width: 100%;
         }
 
+        /* 视图切换控制 */
         .view-section { display: none; }
         .view-section.active { display: block; }
 
-        /* === 【核心修改】主页 (Products) 顶部排版 === */
-        .hero-top {
+        h1, h2, h3 { font-family: 'Orbitron', sans-serif; margin-bottom: 15px; }
+        h1 { font-size: 32px; color: var(--text-main); }
+        p { color: var(--text-muted); margin-bottom: 30px; }
+
+        /* === 主页 (Products) 样式修改 === */
+        
+        /* 顶部区域：包含标题和搜索框 */
+        .page-header {
             display: flex;
-            justify-content: space-between; /* 标题在左，搜索框在右 */
-            align-items: flex-end; /* 底部对齐，让搜索框和副标题对齐 */
-            margin-bottom: 50px;
-            gap: 30px;
+            justify-content: space-between; /* 标题居中，搜索框靠右的关键属性 */
+            align-items: flex-start; /* 顶部对齐 */
+            margin-bottom: 40px;
+            position: relative;
         }
 
-        .page-title h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 38px;
-            color: #ffffff;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
+        .page-title-container {
+            flex: 1; /* 让标题区域占据剩余空间，以便居中对齐 */
+            text-align: center; /* 标题和副标题居中 */
+            padding-right: 200px; /* 预留右侧搜索框的宽度，防止重叠 */
         }
 
-        .page-title p {
-            font-size: 16px;
+        .page-subtitle {
+            font-size: 14px;
             color: var(--text-muted);
+            margin-bottom: 0;
+        }
+
+        .search-bar-container {
+            width: 300px; /* 固定搜索栏宽度 */
+            position: absolute;
+            right: 0; /* 紧贴最右侧 */
+            top: 0;
         }
 
         .search-bar {
-            width: 350px;
+            width: 100%;
             padding: 12px 20px;
-            background: #252525;
+            background: #1a1a1a;
             border: 1px solid #333;
-            border-radius: 6px;
+            border-radius: 4px;
             color: var(--text-main);
             font-family: 'Roboto', sans-serif;
-            font-size: 14px;
         }
-        .search-bar::placeholder { color: #777; }
+        .search-bar::placeholder { color: #666; }
         .search-bar:focus { outline: none; border-color: var(--accent-color); }
 
-        /* === 产品卡片网格 === */
+        /* 产品卡片网格 */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(4, 1fr); /* 强制分为4列 */
             gap: 30px;
         }
 
@@ -117,90 +133,83 @@
             background: var(--card-bg);
             padding: 30px;
             border-radius: 8px;
-            border: 1px solid #2a2a2a;
+            border: 1px solid #333;
             display: flex;
             flex-direction: column;
-            transition: all 0.3s ease;
+            transition: border-color 0.3s;
         }
-        .card:hover { border-color: var(--accent-color); transform: translateY(-5px); }
-        .card h2 { font-size: 22px; color: #ffffff; margin-bottom: 10px; }
-        .card .category { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
-        .card .desc { flex: 1; margin-bottom: 25px; }
+        .card:hover { border-color: var(--accent-color); }
+        .card h2 { font-size: 22px; margin-bottom: 10px; }
+        .card .category { font-size: 14px; color: #666; margin-bottom: 20px; }
+        .card .desc { flex: 1; margin-bottom: 20px; }
         .card .btn {
-            display: block;
-            width: 100%;
+            display: inline-block;
             padding: 12px;
             background: transparent;
-            border: 1px solid var(--accent-color);
             color: var(--accent-color);
+            border: 1px solid var(--accent-color);
             border-radius: 4px;
             font-weight: 500;
             text-align: center;
-            cursor: pointer;
             transition: all 0.3s;
+            cursor: pointer;
         }
-        .card .btn:hover {
+        .card .btn:hover { 
             background: var(--accent-color);
             color: #121212;
-            text-decoration: none;
+            text-decoration: none; 
         }
 
-        /* === 支持与下载页 (Support) === */
-        .support-header {
-            margin-bottom: 40px;
-        }
-        .support-header h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 32px;
-            color: #ffffff;
-            margin-bottom: 10px;
-        }
+        /* === 支持与下载页 (Support) 样式 === */
         .support-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 40px;
         }
-        .support-item {
-            border-bottom: 1px solid #222;
-            padding-bottom: 30px;
-        }
-        .support-item:last-child { border-bottom: none; }
-        .support-item h2 { font-size: 24px; color: #ffffff; margin-bottom: 5px; }
-        .support-item .support-meta { font-size: 14px; color: var(--accent-color); margin-bottom: 20px; }
-        .support-item h3 { font-family: 'Roboto', sans-serif; font-size: 15px; font-weight: bold; color: #fff; margin-top: 20px; margin-bottom: 10px; }
+        .support-item h2 { font-size: 20px; color: #fff; margin-bottom: 10px; }
+        .support-item .support-meta { font-size: 13px; color: #666; margin-bottom: 15px; }
+        .support-item h3 { font-family: 'Roboto', sans-serif; font-size: 15px; font-weight: bold; color: var(--accent-color); margin-top: 20px; margin-bottom: 10px; }
         .support-item ul { list-style: none; }
         .support-item li { margin-bottom: 8px; font-size: 14px; }
         .support-item li a { color: var(--text-muted); }
-        .support-item li a:hover { color: var(--accent-color); text-decoration: none; }
+        .support-item li a:hover { color: var(--accent-color); }
         .support-item li span { margin-right: 8px; }
 
-        /* === 联系页 (Contact) === */
+        /* === 联系页 (Contact) 样式 === */
         .contact-container { max-width: 600px; }
-        .contact-container h1 { font-family: 'Orbitron', sans-serif; font-size: 32px; color: #ffffff; margin-bottom: 20px; }
-        .contact-container p { color: var(--text-muted); margin-bottom: 40px; }
         .contact-block { margin-bottom: 30px; }
-        .contact-block h3 { font-size: 18px; color: #ffffff; margin-bottom: 10px; font-weight: bold; }
-        .contact-block p { margin-bottom: 5px; font-size: 15px; color: var(--text-main); }
+        .contact-block h3 { font-family: 'Roboto', sans-serif; font-size: 18px; color: #fff; margin-bottom: 10px; }
+        .contact-block p { margin-bottom: 5px; font-size: 15px; }
 
-        /* === 页脚 === */
+        /* 页脚 */
         footer {
             padding: 40px 50px;
             text-align: center;
-            font-size: 12px;
+            font-size: 13px;
             color: #555;
             background: #0a0a0a;
-            border-top: 1px solid #1a1a1a;
         }
-        footer p { margin-bottom: 8px; }
+        footer p { margin-bottom: 10px; }
+        footer p:last-child { margin-bottom: 0; }
 
-        /* === 移动端适配 === */
+        /* 移动端适配 */
+        @media (max-width: 1200px) {
+            .product-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 900px) {
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
+            .page-header { flex-direction: column; gap: 20px; }
+            .page-title-container { text-align: left; padding-right: 0; }
+            .search-bar-container { position: static; width: 100%; }
+        }
+
         @media (max-width: 768px) {
-            header { padding: 15px 20px; flex-direction: column; gap: 15px; }
+            header { padding: 20px; flex-direction: column; gap: 20px; }
+            nav { gap: 15px; }
             main { padding: 20px; }
-            .hero-top { flex-direction: column; align-items: stretch; gap: 20px; }
-            .search-bar { width: 100%; }
+            .product-grid { grid-template-columns: 1fr; }
             .support-grid { grid-template-columns: 1fr; }
-            .page-title h1 { font-size: 28px; }
         }
     </style>
 </head>
@@ -220,24 +229,26 @@
     <main>
         <!-- 1. 产品主页 (Products) -->
         <section id="view-products" class="view-section active">
-            <!-- 顶部标题和搜索栏区域 -->
-            <div class="hero-top">
-                <div class="page-title">
+            <div class="page-header">
+                <!-- 左侧/中间：标题和副标题 -->
+                <div class="page-title-container">
                     <h1>Featured Products</h1>
-                    <p>Explore our high-performance optical networking equipment.</p>
+                    <p class="page-subtitle">Explore our high-performance optical networking equipment.</p>
                 </div>
-                <input type="text" id="product-search" class="search-bar" placeholder="Search products...">
+                
+                <!-- 右侧：搜索栏 -->
+                <div class="search-bar-container">
+                    <input type="text" id="product-search" class="search-bar" placeholder="Search products...">
+                </div>
             </div>
-            <!-- 产品卡片 -->
+            
             <div id="product-grid" class="product-grid"></div>
         </section>
 
         <!-- 2. 支持与下载页 (Support & Download) -->
         <section id="view-support" class="view-section">
-            <div class="support-header">
-                <h1>Support & Downloads</h1>
-                <p>Access firmware updates, drivers, manuals, and technical documentation for your devices.</p>
-            </div>
+            <h1>Support & Downloads</h1>
+            <p>Access firmware updates, drivers, manuals, and technical documentation for your devices.</p>
             <div id="support-grid" class="support-grid"></div>
         </section>
 
@@ -331,14 +342,17 @@
 
         // 1. 切换页面视图
         function switchView(viewId) {
+            // 隐藏所有视图
             document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+            // 取消导航激活状态
             document.querySelectorAll('nav a').forEach(el => el.classList.remove('active'));
             
+            // 显示选中的视图并激活导航
             document.getElementById(`view-${viewId}`).classList.add('active');
             document.getElementById(`nav-${viewId}`).classList.add('active');
         }
 
-        // 2. 渲染主页卡片
+        // 2. 渲染主页卡片 (参考图1)
         function renderProducts(productList) {
             const grid = document.getElementById('product-grid');
             grid.innerHTML = productList.map(product => `
@@ -351,15 +365,16 @@
             `).join('');
         }
 
-        // 3. 渲染支持与下载页内容
+        // 3. 渲染支持与下载页内容 (参考图3结构)
         function renderSupportPage() {
             const grid = document.getElementById('support-grid');
             grid.innerHTML = products.map(product => {
                 let html = `
                     <div class="support-item">
                         <h2>${product.name}</h2>
-                        <div class="support-meta">${product.category} | ${product.desc}</div>
+                        <div class="support-meta">${product.category}<br>${product.desc}</div>
                 `;
+
                 if(product.videoUrlList && product.videoUrlList.length > 0) {
                     html += `<h3>Videos / Tutorials</h3><ul>`;
                     product.videoUrlList.forEach(v => {
@@ -367,6 +382,7 @@
                     });
                     html += `</ul>`;
                 }
+
                 if(product.softwareList && product.softwareList.length > 0) {
                     html += `<h3>Software / Tools</h3><ul>`;
                     product.softwareList.forEach(s => {
@@ -374,6 +390,7 @@
                     });
                     html += `</ul>`;
                 }
+
                 if(product.firmwareList && product.firmwareList.length > 0) {
                     html += `<h3>Firmware</h3><ul>`;
                     product.firmwareList.forEach(f => {
@@ -381,24 +398,26 @@
                     });
                     html += `</ul>`;
                 }
+
                 html += `</div>`;
                 return html;
             }).join('');
         }
 
-        // 4. 初始化与搜索
+        // 4. 初始化运行
         renderProducts(products);
         renderSupportPage();
 
+        // 5. 搜索功能
         document.getElementById('product-search').addEventListener('input', (e) => {
             const keyword = e.target.value.toLowerCase();
             const filtered = products.filter(p => 
                 p.name.toLowerCase().includes(keyword) || 
-                p.desc.toLowerCase().includes(keyword) ||
-                p.category.toLowerCase().includes(keyword)
+                p.desc.toLowerCase().includes(keyword)
             );
             renderProducts(filtered);
         });
+
     </script>
 </body>
 </html>
