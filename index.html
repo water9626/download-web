@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header>
-        <a href="index.html" class="logo">FIBERSHOW</a>
+        <div class="logo"><a href="index.html">FIBERSHOW</a></div>
         <nav>
             <ul>
                 <li><a href="index.html" class="active">Products</a></li>
@@ -16,24 +17,25 @@
                 <li><a href="contact.html">Contact Us</a></li>
             </ul>
         </nav>
-        <!-- 搜索框 -->
-        <div class="search-container">
-            <input type="text" id="search-input" placeholder="Search products...">
-        </div>
     </header>
 
     <main>
-        <h1 class="page-title">Featured Products</h1>
-        <p class="page-desc">Explore our high-performance optical networking equipment.</p>
-        <!-- 产品列表容器 -->
-        <div id="product-list" class="product-grid"></div>
+        <div class="search-wrapper">
+            <input type="text" id="search-input" placeholder="Search products...">
+        </div>
+
+        <h1>Featured Products</h1>
+        <p class="subtitle">Explore our high-performance optical networking equipment.</p>
+
+        <div id="product-grid" class="product-grid">
+            <!-- Products will be injected here by script.js -->
+            <p style="grid-column: 1/-1; text-align: center; color: var(--text-muted);">Loading products...</p>
+        </div>
     </main>
 
     <footer>
-        <div class="footer-content">
-            <p>&copy; 2026 Fibershow. All rights reserved.</p>
-            <p class="disclaimer">Disclaimer: The information provided on this website is for general informational and educational purposes only. All product specifications and downloads are subject to change without notice. Use of this information and downloaded files is at your own risk.</p>
-        </div>
+        <p>&copy; 2026 Fibershow. All rights reserved.</p>
+        <p>Disclaimer: The information provided on this website is for general informational and educational purposes only. All product specifications and downloads are subject to change without notice. Use of this information and downloaded files is at your own risk.</p>
     </footer>
 
     <script src="script.js"></script>
