@@ -4,7 +4,188 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fibershow - Products</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- 1. 引入字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* 2. 内联所有CSS样式，确保样式不会丢失 */
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --accent-color: #00bcd4;
+            --header-bg: #0a0a0a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Roboto', 'Microsoft YaHei', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a { color: var(--accent-color); text-decoration: none; transition: color 0.3s ease; }
+        a:hover { color: #ffffff; }
+
+        /* 头部导航 */
+        header {
+            background-color: var(--header-bg);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        nav a {
+            color: var(--text-main);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        nav a.active {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 4px;
+        }
+
+        /* 主体内容 */
+        main {
+            flex-grow: 1;
+            padding: 3rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+        .subtitle {
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+        }
+
+        /* 搜索框 */
+        .search-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 2rem;
+        }
+        #search-input {
+            background-color: var(--card-bg);
+            border: 1px solid #333;
+            color: var(--text-main);
+            padding: 0.6rem 1rem;
+            border-radius: 4px;
+            width: 280px;
+            font-family: 'Roboto', sans-serif;
+            outline: none;
+        }
+        #search-input:focus {
+            border-color: var(--accent-color);
+        }
+
+        /* 产品卡片网格 */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        /* 卡片样式 */
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border-left: 4px solid transparent;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-left-color: var(--accent-color);
+            box-shadow: 0 8px 25px rgba(0,188,212,0.15);
+        }
+        .card-category {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+        .card-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+        .btn-details {
+            display: inline-block;
+            text-align: center;
+            padding: 0.8rem;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .btn-details:hover {
+            background-color: var(--accent-color);
+            color: #000000;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: var(--header-bg);
+            text-align: center;
+            padding: 2rem 5%;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 4rem;
+        }
+        footer p { margin-bottom: 0.8rem; }
+
+        /* 手机端适配 */
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 1rem; padding: 1rem 5%; }
+            nav ul { gap: 1rem; }
+            .search-wrapper { justify-content: center; }
+            #search-input { width: 100%; }
+            h1 { font-size: 1.8rem; text-align: center; }
+            .subtitle { text-align: center; font-size: 0.9rem; }
+            .product-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
@@ -28,7 +209,7 @@
         <p class="subtitle">Explore our high-performance optical networking equipment.</p>
 
         <div id="product-grid" class="product-grid">
-            <!-- Products will be injected here by script.js -->
+            <!-- Products will be injected here by script -->
             <p style="grid-column: 1/-1; text-align: center; color: var(--text-muted);">Loading products...</p>
         </div>
     </main>
@@ -38,6 +219,112 @@
         <p>Disclaimer: The information provided on this website is for general informational and educational purposes only. All product specifications and downloads are subject to change without notice. Use of this information and downloaded files is at your own risk.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // 3. 内联所有JavaScript逻辑，确保功能正常
+        document.addEventListener('DOMContentLoaded', () => {
+            // 产品数据
+            const products = [
+              {
+                "category": "HW-ma5671A SFP ONU",
+                "name": "MA5671A",
+                "desc": "GPON SFP ONU Stick",
+                "videoUrlList": [
+                  { "title": "Settings for using MA5671A with MikroTik (Chinese)", "url": "https://youtu.be/ygxaMOKvX7Y?is=EN1JAr7x5U7uGoeJ" },
+                  { "title": "16-digit to 12-digit LOID/SN converter — compatible with all ONUs", "url": "https://youtu.be/1uWbhbN80os?is=hybT2ZSZ85rAC1Q5" },
+                  { "title": "10G Xgspon 8311", "url": "https://youtu.be/FBBT3GTuYtw?is=Vy9_tgmbJXeZGQKW" }
+                ],
+                "pdfList": [],
+                "softwareList": [
+                  { "title": "Download M5671A ONU Dedicated Configuration Tool", "url": "https://github.com/wifixshare/gpon-stick-configuration-tool/releases/" }
+                ],
+                "firmwareList": []
+              },
+              {
+                "category": "ODI PONstick",
+                "name": "ODI RTL9601d stick",
+                "desc": "ODI RTL9601d stick",
+                "videoUrlList": [
+                  { "title": "MAC Key Calculation for ODI", "url": "https://youtu.be/TD4QhAxm4R8?is=lw5UrqiTHv8E3_3m" },
+                  { "title": "Reposted: Detailed ODI Setup Tutorial", "url": "https://r1bnc.com/post/94/" },
+                  { "title": "Reposted: Detailed ODI/vsol Setup Tutorial", "url": "https://github.com/Anime4000/RTL960x/blob/main/Docs/Setup_Stick.md" }
+                ],
+                "pdfList": [],
+                "softwareList": [
+                  { "title": "Website used to calculate the MAC Key for ODI", "url": "http://www.ip33.com/md5.html" }
+                ],
+                "firmwareList": [
+                  { "title": "Reposted Firmware", "url": "https://github.com/Anime4000/RTL960x/tree/main/Firmware/DFP-34X-2C2" }
+                ]
+              },
+              {
+                "category": "Volt mini olt",
+                "name": "mini gpon olt SFP",
+                "desc": "mini gpon olt SFP",
+                "videoUrlList": [
+                  { "title": "How to set ONU to router mode (works for single ONU router mode)", "url": "https://youtu.be/ckJvqJloSzg?is=03qWgC6W4H0qiQox" },
+                  { "title": "How to set ONU to bridge mode (works for single ONU bridge mode)", "url": "https://youtu.be/QFcUg1Ra1p0?is=zFiDKugYn9h1TeVn" },
+                  { "title": "How to Install VOLT Software (Video)", "url": "https://youtu.be/zTkDRKb20QM?is=U_GQk3XpTTJrivRB" }
+                ],
+                "pdfList": [],
+                "softwareList": [
+                  { "title": "For volt", "url": "https://mega.nz/folder/uopBTQYI#0XRXL0XkLRK3GAoaL8RVkQ" }
+                ],
+                "firmwareList": []
+              },
+              {
+                "category": "Vsol ONU/Olt",
+                "name": "Vsol ONU/Olt",
+                "desc": "V2801SG/V2801Q/V2802RH/OLT",
+                "videoUrlList": [
+                  { "title": "How to change SN and MAC address in web interface (V2801SG / V2801Q / V2802RH)", "url": "https://youtu.be/mH7NNXCYMK8?is=XdmunwA5zcqQjr9x" },
+                  { "title": "V2801 / V2801Q / V2802RH: Login IP & Telnet Enable", "url": "https://youtu.be/mHXsrBKqy3k?is=xEB6T5Wd6g-FalOA" }
+                ],
+                "pdfList": [],
+                "softwareList": [],
+                "firmwareList": []
+              }
+            ];
+
+            const grid = document.getElementById('product-grid');
+            const searchInput = document.getElementById('search-input');
+
+            // 渲染产品卡片
+            function renderProducts(productsToRender) {
+                grid.innerHTML = '';
+                if (productsToRender.length === 0) {
+                    grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-muted);">No products found matching your search.</p>';
+                    return;
+                }
+                productsToRender.forEach(product => {
+                    const detailUrl = `product-detail.html?name=${encodeURIComponent(product.name)}`;
+                    const cardHtml = `
+                        <div class="product-card">
+                            <div>
+                                <div class="card-category">${product.category}</div>
+                                <h2 class="card-name">${product.name}</h2>
+                                <p class="card-desc">${product.desc}</p>
+                            </div>
+                            <a href="${detailUrl}" class="btn-details">View Details & Downloads</a>
+                        </div>
+                    `;
+                    grid.innerHTML += cardHtml;
+                });
+            }
+
+            // 初始渲染
+            renderProducts(products);
+
+            // 搜索功能
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const filteredData = products.filter(product =>
+                    product.name.toLowerCase().includes(searchTerm) ||
+                    product.category.toLowerCase().includes(searchTerm) ||
+                    product.desc.toLowerCase().includes(searchTerm)
+                );
+                renderProducts(filteredData);
+            });
+        });
+    </script>
 </body>
 </html>
