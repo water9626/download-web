@@ -1,19 +1,14 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fibershow - Products</title>
-    <!-- 引入全局样式 -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- 顶部导航 -->
     <header>
-        <div class="logo-container">
-            <a href="index.html" class="logo-text">FIBERSHOW</a>
-        </div>
+        <a href="index.html" class="logo">FIBERSHOW</a>
         <nav>
             <ul>
                 <li><a href="index.html" class="active">Products</a></li>
@@ -21,25 +16,26 @@
                 <li><a href="contact.html">Contact Us</a></li>
             </ul>
         </nav>
+        <!-- 搜索框 -->
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search products...">
+        </div>
     </header>
 
-    <!-- 主内容区：产品列表 -->
     <main>
-        <div class="product-grid" id="product-container">
-            <!-- 这里的产品卡片由 script.js 自动动态生成 -->
-        </div>
+        <h1 class="page-title">Featured Products</h1>
+        <p class="page-desc">Explore our high-performance optical networking equipment.</p>
+        <!-- 产品列表容器 -->
+        <div id="product-list" class="product-grid"></div>
     </main>
 
-    <!-- 统一页脚 -->
     <footer>
-        <p>© 2026 Fibershow. All rights reserved.</p>
-        <div class="disclaimer">
-            <div class="disclaimer-title">免责声明</div>
-            <p>本网站所展示的产品图片、规格参数及文字说明仅供参考，不作为最终依据，实际产品请以收到实物为准。我们保留随时更改产品设计和规格的权利，恕不另行通知。任何由于使用本网站信息而造成的直接或间接损失，Fibershow 概不负责。未经授权，严禁转载本站内容。</p>
+        <div class="footer-content">
+            <p>&copy; 2026 Fibershow. All rights reserved.</p>
+            <p class="disclaimer">Disclaimer: The information provided on this website is for general informational and educational purposes only. All product specifications and downloads are subject to change without notice. Use of this information and downloaded files is at your own risk.</p>
         </div>
     </footer>
 
-    <!-- 引入 JS 脚本加载产品数据 -->
     <script src="script.js"></script>
 </body>
 </html>
