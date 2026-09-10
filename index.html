@@ -1,271 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fibershow</title>
-    <!-- 引入设计感标题字体和易读正文字体 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    
-    <style>
-        /* ================= 基础 CSS 样式 ================= */
-        :root {
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --text-main: #e0e0e0;
-            --text-muted: #a0a0a0;
-            --accent-color: #00bcd4;
-            --header-bg: rgba(10, 10, 10, 0.95);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        a { color: var(--accent-color); text-decoration: none; transition: 0.3s; }
-        a:hover { text-decoration: underline; }
-
-        /* 头部导航 */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 50px;
-            background-color: var(--header-bg);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            font-size: 24px;
-            color: var(--accent-color);
-            letter-spacing: 2px;
-        }
-
-        nav { display: flex; gap: 30px; }
-        nav a {
-            color: var(--text-main);
-            font-weight: 500;
-            cursor: pointer;
-        }
-        nav a.active { color: var(--accent-color); }
-
-        /* 主体内容区 */
-        main {
-            flex: 1;
-            padding: 40px 50px;
-            max-width: 1400px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        /* 视图切换控制 */
-        .view-section { display: none; }
-        .view-section.active { display: block; }
-
-        h1, h2, h3 { font-family: 'Orbitron', sans-serif; margin-bottom: 15px; }
-        h1 { font-size: 32px; color: var(--text-main); }
-        p { color: var(--text-muted); margin-bottom: 30px; }
-
-        /* === 主页 (Products) 样式修改 === */
-        
-        /* 顶部区域：包含标题和搜索框 */
-        .page-header {
-            display: flex;
-            justify-content: space-between; /* 标题居中，搜索框靠右的关键属性 */
-            align-items: flex-start; /* 顶部对齐 */
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        .page-title-container {
-            flex: 1; /* 让标题区域占据剩余空间，以便居中对齐 */
-            text-align: center; /* 标题和副标题居中 */
-            padding-right: 200px; /* 预留右侧搜索框的宽度，防止重叠 */
-        }
-
-        .page-subtitle {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 0;
-        }
-
-        .search-bar-container {
-            width: 300px; /* 固定搜索栏宽度 */
-            position: absolute;
-            right: 0; /* 紧贴最右侧 */
-            top: 0;
-        }
-
-        .search-bar {
-            width: 100%;
-            padding: 12px 20px;
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 4px;
-            color: var(--text-main);
-            font-family: 'Roboto', sans-serif;
-        }
-        .search-bar::placeholder { color: #666; }
-        .search-bar:focus { outline: none; border-color: var(--accent-color); }
-
-        /* 产品卡片网格 */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 强制分为4列 */
-            gap: 30px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 8px;
-            border: 1px solid #333;
-            display: flex;
-            flex-direction: column;
-            transition: border-color 0.3s;
-        }
-        .card:hover { border-color: var(--accent-color); }
-        .card h2 { font-size: 22px; margin-bottom: 10px; }
-        .card .category { font-size: 14px; color: #666; margin-bottom: 20px; }
-        .card .desc { flex: 1; margin-bottom: 20px; }
-        .card .btn {
-            display: inline-block;
-            padding: 12px;
-            background: transparent;
-            color: var(--accent-color);
-            border: 1px solid var(--accent-color);
-            border-radius: 4px;
-            font-weight: 500;
-            text-align: center;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-        .card .btn:hover { 
-            background: var(--accent-color);
-            color: #121212;
-            text-decoration: none; 
-        }
-
-        /* === 支持与下载页 (Support) 样式 === */
-        .support-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 40px;
-        }
-        .support-item h2 { font-size: 20px; color: #fff; margin-bottom: 10px; }
-        .support-item .support-meta { font-size: 13px; color: #666; margin-bottom: 15px; }
-        .support-item h3 { font-family: 'Roboto', sans-serif; font-size: 15px; font-weight: bold; color: var(--accent-color); margin-top: 20px; margin-bottom: 10px; }
-        .support-item ul { list-style: none; }
-        .support-item li { margin-bottom: 8px; font-size: 14px; }
-        .support-item li a { color: var(--text-muted); }
-        .support-item li a:hover { color: var(--accent-color); }
-        .support-item li span { margin-right: 8px; }
-
-        /* === 联系页 (Contact) 样式 === */
-        .contact-container { max-width: 600px; }
-        .contact-block { margin-bottom: 30px; }
-        .contact-block h3 { font-family: 'Roboto', sans-serif; font-size: 18px; color: #fff; margin-bottom: 10px; }
-        .contact-block p { margin-bottom: 5px; font-size: 15px; }
-
-        /* 页脚 */
-        footer {
-            padding: 40px 50px;
-            text-align: center;
-            font-size: 13px;
-            color: #555;
-            background: #0a0a0a;
-        }
-        footer p { margin-bottom: 10px; }
-        footer p:last-child { margin-bottom: 0; }
-
-        /* 移动端适配 */
-        @media (max-width: 1200px) {
-            .product-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-
-        @media (max-width: 900px) {
-            .product-grid { grid-template-columns: repeat(2, 1fr); }
-            .page-header { flex-direction: column; gap: 20px; }
-            .page-title-container { text-align: left; padding-right: 0; }
-            .search-bar-container { position: static; width: 100%; }
-        }
-
-        @media (max-width: 768px) {
-            header { padding: 20px; flex-direction: column; gap: 20px; }
-            nav { gap: 15px; }
-            main { padding: 20px; }
-            .product-grid { grid-template-columns: 1fr; }
-            .support-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fibershow - Optical Networking Products & Downloads</title>
+    <meta name="description" content="Fibershow provides high-performance optical networking equipment, GPON SFP ONU sticks, OLT modules, firmware, software tools and technical documentation." />
+    <meta name="keywords" content="GPON, SFP ONU, OLT, optical network, fiber optic, MA5671A, ODI, VOLT, Vsol" />
+    <link rel="stylesheet" href="style.css" />
 </head>
-<body>
 
-    <!-- 头部导航 -->
+<body>
+    <div class="fiber-bg">
+        <div class="fiber-line line-1"></div>
+        <div class="fiber-line line-2"></div>
+        <div class="fiber-line line-3"></div>
+        <div class="fiber-line line-4"></div>
+        <div class="fiber-line line-5"></div>
+        <div class="fiber-line line-6"></div>
+        <div class="flash-dot dot-1"></div>
+        <div class="flash-dot dot-2"></div>
+        <div class="flash-dot dot-3"></div>
+        <div class="flash-dot dot-4"></div>
+        <div class="flash-dot dot-5"></div>
+        <div class="flash-dot dot-6"></div>
+        <div class="flash-dot dot-7"></div>
+        <div class="flash-dot dot-8"></div>
+    </div>
+
     <header>
-        <div class="logo">FIBERSHOW</div>
+        <div class="logo">FIBER<span>SHOW</span></div>
         <nav>
             <a onclick="switchView('products')" id="nav-products" class="active">Products</a>
             <a onclick="switchView('support')" id="nav-support">Support & Download</a>
             <a onclick="switchView('contact')" id="nav-contact">Contact Us</a>
         </nav>
+        <div class="header-search-wrap">
+            <input type="text" id="product-search" class="search-bar" placeholder="Search products..." />
+        </div>
     </header>
 
-    <!-- 主体内容 -->
     <main>
-        <!-- 1. 产品主页 (Products) -->
         <section id="view-products" class="view-section active">
-            <div class="page-header">
-                <!-- 左侧/中间：标题和副标题 -->
-                <div class="page-title-container">
-                    <h1>Featured Products</h1>
-                    <p class="page-subtitle">Explore our high-performance optical networking equipment.</p>
-                </div>
-                
-                <!-- 右侧：搜索栏 -->
-                <div class="search-bar-container">
-                    <input type="text" id="product-search" class="search-bar" placeholder="Search products...">
-                </div>
+            <div class="page-title-block">
+                <h1>Products</h1>
+                <p>Professional GPON SFP ONU sticks, OLT modules and optical transceivers. Download firmware, software tools and technical documentation for your devices.</p>
             </div>
-            
             <div id="product-grid" class="product-grid"></div>
         </section>
 
-        <!-- 2. 支持与下载页 (Support & Download) -->
         <section id="view-support" class="view-section">
-            <h1>Support & Downloads</h1>
-            <p>Access firmware updates, drivers, manuals, and technical documentation for your devices.</p>
+            <div class="page-title-block">
+                <h1>Support & Downloads</h1>
+                <p>Access firmware updates, drivers, manuals, and technical documentation for your devices.</p>
+            </div>
             <div id="support-grid" class="support-grid"></div>
         </section>
 
-        <!-- 3. 联系页 (Contact Us) -->
         <section id="view-contact" class="view-section">
-            <div class="contact-container">
+            <div class="page-title-block">
                 <h1>Contact Us</h1>
-                <p>For any business inquiries, technical support, or after-sales service, please contact us via the following methods:</p>
-                
+                <p>For business inquiries, technical support, or after-sales service, please reach out through the following channels.</p>
+            </div>
+            <div class="contact-container">
                 <div class="contact-block">
                     <h3>Technical Support</h3>
-                    <p>Email: <a href="mailto:support@fibershow.com">support@fibershow.com</a></p>
+                    <p>Email: <a href="mailto:support@fibershow.cn">support@fibershow.cn</a></p>
                 </div>
-
                 <div class="contact-block">
                     <h3>Business & Sales</h3>
-                    <p>Email: <a href="mailto:sales@fibershow.com">sales@fibershow.com</a></p>
+                    <p>Email: <a href="mailto:sales@fibershow.cn">sales@fibershow.cn</a></p>
                     <p>Phone: +86 10 1234 5678</p>
                     <p>Working hours: Mon-Fri, 9:00 AM - 6:00 PM (UTC+8)</p>
                 </div>
@@ -273,151 +76,26 @@
         </section>
     </main>
 
-    <!-- 页脚 -->
+    <div class="modal-overlay" id="product-modal" onclick="closeModalOnOverlay(event)">
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <h2 id="modal-title"></h2>
+                    <span class="modal-category" id="modal-category"></span>
+                </div>
+                <button class="modal-close" onclick="closeModal()">✕</button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
     <footer>
         <p>&copy; 2026 Fibershow. All rights reserved.</p>
-        <p>Disclaimer: The information provided on this website is for general informational and educational purposes only. All product specifications and downloads are subject to change without notice.</p>
+        <p>Disclaimer: The information on this website is for general informational purposes only. Product specifications and downloads are subject to change without notice.</p>
     </footer>
 
-    <!-- JavaScript 逻辑 -->
-    <script>
-        // 完整的产品数据
-        const products = [
-            {
-                category: "HW-ma5671A SFP ONU",
-                name: "MA5671A",
-                desc: "GPON SFP ONU Stick",
-                videoUrlList: [
-                    { title: "Settings for using MA5671A with MikroTik (Chinese)", url: "https://youtu.be/ygxaMOKvX7Y" },
-                    { title: "16-digit to 12-digit LOID/SN converter", url: "https://youtu.be/1uWbhbN80os" },
-                    { title: "10G Xgspon 8311", url: "https://youtu.be/FBBT3GTuYtw" }
-                ],
-                softwareList: [
-                    { title: "Download M5671A ONU Dedicated Configuration Tool", url: "https://github.com/wifixshare/gpon-stick-configuration-tool/releases/" }
-                ],
-                firmwareList: []
-            },
-            {
-                category: "ODI PONstick",
-                name: "ODI RTL9601d stick",
-                desc: "ODI RTL9601d stick",
-                videoUrlList: [
-                    { title: "MAC Key Calculation for ODI", url: "https://youtu.be/TD4QhAxm4R8" },
-                    { title: "Reposted: Detailed ODI Setup Tutorial", url: "https://r1bnc.com/post/94/" },
-                    { title: "Reposted: Detailed ODI/vsol Setup Tutorial", url: "https://github.com/Anime4000/RTL960x/blob/main/Docs/Setup_Stick.md" }
-                ],
-                softwareList: [
-                    { title: "Website used to calculate the MAC Key for ODI", url: "http://www.ip33.com/md5.html" }
-                ],
-                firmwareList: [
-                    { title: "Reposted Firmware (DFP-34X-2C2)", url: "https://github.com/Anime4000/RTL960x/tree/main/Firmware/DFP-34X-2C2" }
-                ]
-            },
-            {
-                category: "Volt mini olt",
-                name: "mini gpon olt SFP",
-                desc: "mini gpon olt SFP",
-                videoUrlList: [
-                    { title: "How to set ONU to router mode", url: "https://youtu.be/ckJvqJloSzg" },
-                    { title: "How to set ONU to bridge mode", url: "https://youtu.be/QFcUg1Ra1p0" },
-                    { title: "How to Install VOLT Software (Video)", url: "https://youtu.be/zTkDRKb20QM" }
-                ],
-                softwareList: [
-                    { title: "For volt software", url: "https://mega.nz/folder/uopBTQYI#0XRXL0XkLRK3GAoaL8RVkQ" }
-                ],
-                firmwareList: []
-            },
-            {
-                category: "Vsol ONU/Olt",
-                name: "Vsol ONU/Olt",
-                desc: "V2801SG/V2801Q/V2802RH/OLT",
-                videoUrlList: [
-                    { title: "Change SN and MAC address in web interface", url: "https://youtu.be/mH7NNXCYMK8" },
-                    { title: "Login IP & Telnet Enable", url: "https://youtu.be/mHXsrBKqy3k" }
-                ],
-                softwareList: [],
-                firmwareList: []
-            }
-        ];
-
-        // 1. 切换页面视图
-        function switchView(viewId) {
-            // 隐藏所有视图
-            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
-            // 取消导航激活状态
-            document.querySelectorAll('nav a').forEach(el => el.classList.remove('active'));
-            
-            // 显示选中的视图并激活导航
-            document.getElementById(`view-${viewId}`).classList.add('active');
-            document.getElementById(`nav-${viewId}`).classList.add('active');
-        }
-
-        // 2. 渲染主页卡片 (参考图1)
-        function renderProducts(productList) {
-            const grid = document.getElementById('product-grid');
-            grid.innerHTML = productList.map(product => `
-                <div class="card">
-                    <h2>${product.name}</h2>
-                    <div class="category">${product.category}</div>
-                    <div class="desc">${product.desc}</div>
-                    <a onclick="switchView('support')" class="btn">View Details & Downloads</a>
-                </div>
-            `).join('');
-        }
-
-        // 3. 渲染支持与下载页内容 (参考图3结构)
-        function renderSupportPage() {
-            const grid = document.getElementById('support-grid');
-            grid.innerHTML = products.map(product => {
-                let html = `
-                    <div class="support-item">
-                        <h2>${product.name}</h2>
-                        <div class="support-meta">${product.category}<br>${product.desc}</div>
-                `;
-
-                if(product.videoUrlList && product.videoUrlList.length > 0) {
-                    html += `<h3>Videos / Tutorials</h3><ul>`;
-                    product.videoUrlList.forEach(v => {
-                        html += `<li><span>▶️</span><a href="${v.url}" target="_blank">${v.title}</a></li>`;
-                    });
-                    html += `</ul>`;
-                }
-
-                if(product.softwareList && product.softwareList.length > 0) {
-                    html += `<h3>Software / Tools</h3><ul>`;
-                    product.softwareList.forEach(s => {
-                        html += `<li><span>💻</span><a href="${s.url}" target="_blank">${s.title}</a></li>`;
-                    });
-                    html += `</ul>`;
-                }
-
-                if(product.firmwareList && product.firmwareList.length > 0) {
-                    html += `<h3>Firmware</h3><ul>`;
-                    product.firmwareList.forEach(f => {
-                        html += `<li><span>⚙️</span><a href="${f.url}" target="_blank">${f.title}</a></li>`;
-                    });
-                    html += `</ul>`;
-                }
-
-                html += `</div>`;
-                return html;
-            }).join('');
-        }
-
-        // 4. 初始化运行
-        renderProducts(products);
-        renderSupportPage();
-
-        // 5. 搜索功能
-        document.getElementById('product-search').addEventListener('input', (e) => {
-            const keyword = e.target.value.toLowerCase();
-            const filtered = products.filter(p => 
-                p.name.toLowerCase().includes(keyword) || 
-                p.desc.toLowerCase().includes(keyword)
-            );
-            renderProducts(filtered);
-        });
-
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
