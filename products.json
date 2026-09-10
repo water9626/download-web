@@ -1,26 +1,176 @@
 [
-  {
-    "id": 1,
-    "name": "MA5671A",
-    "imgSrc": "images/ma5671a.jpg",
-    "desc": "华为MA5671A光猫模块"
-  },
-  {
-    "id": 2,
-    "name": "ODI",
-    "imgSrc": "images/odi.jpg",
-    "desc": "ODI光通信设备"
-  },
-  {
-    "id": 3,
-    "name": "VOLT",
-    "imgSrc": "images/volt.jpg",
-    "desc": "VOLT交换机/光模块"
-  },
-  {
-    "id": 4,
-    "name": "VSOL",
-    "imgSrc": "images/vsol.jpg",
-    "desc": "VSOL光纤设备"
-  }
+    {
+        "id": "ma5671a",
+        "category": "HW-ma5671A SFP ONU",
+        "name": "MA5671A",
+        "imgSrc": "images/ma5671a.jpg",
+        "buyUrl": "https://example.com/buy-ma5671a",
+        "desc": "GPON SFP ONU Stick - High-performance GPON optical network unit in SFP form factor, compatible with major OLT vendors.",
+        "specs": {
+            "Form Factor": "SFP",
+            "Standard": "ITU-T G.984 GPON",
+            "Rate": "2.5Gbps Down / 1.25Gbps Up",
+            "Wavelength": "Tx 1310nm / Rx 1490nm",
+            "Interface": "SFP 2x5",
+            "Power Supply": "3.3V"
+        },
+        "videoUrlList": [
+            {
+                "id": "ma5671a-v1",
+                "title": "Settings for using MA5671A with MikroTik (Chinese)",
+                "url": "https://youtu.be/ygxaMOKvX7Y",
+                "type": "video"
+            },
+            {
+                "id": "ma5671a-v2",
+                "title": "16-digit to 12-digit LOID/SN converter",
+                "url": "https://youtu.be/1uWbhbN80os",
+                "type": "video"
+            },
+            {
+                "id": "ma5671a-v3",
+                "title": "10G Xgspon 8311",
+                "url": "https://youtu.be/FBBT3GTuYtw",
+                "type": "video"
+            }
+        ],
+        "softwareList": [
+            {
+                "id": "ma5671a-s1",
+                "title": "Download M5671A ONU Dedicated Configuration Tool",
+                "url": "https://github.com/wifixshare/gpon-stick-configuration-tool/releases/",
+                "type": "software"
+            }
+        ],
+        "firmwareList": []
+    },
+    {
+        "id": "odi",
+        "category": "ODI PONstick",
+        "name": "ODI RTL9601d stick",
+        "imgSrc": "images/odi.jpg",
+        "buyUrl": "https://example.com/buy-odi",
+        "desc": "ODI RTL9601d PON Stick - Compact GPON/XPON SFP transceiver with built-in ONU functionality, ideal for router integration.",
+        "specs": {
+            "Form Factor": "SFP",
+            "Chipset": "Realtek RTL9601D",
+            "Standard": "GPON / XPON",
+            "Rate": "2.5Gbps Down / 1.25Gbps Up",
+            "Management": "Web UI / Telnet / SSH",
+            "Power Supply": "3.3V"
+        },
+        "videoUrlList": [
+            {
+                "id": "odi-v1",
+                "title": "MAC Key Calculation for ODI",
+                "url": "https://youtu.be/TD4QhAxm4R8",
+                "type": "video"
+            },
+            {
+                "id": "odi-v2",
+                "title": "Reposted: Detailed ODI Setup Tutorial",
+                "url": "https://r1bnc.com/post/94/",
+                "type": "doc"
+            },
+            {
+                "id": "odi-v3",
+                "title": "Reposted: Detailed ODI/vsol Setup Tutorial",
+                "url": "https://github.com/Anime4000/RTL960x/blob/main/Docs/Setup_Stick.md",
+                "type": "doc"
+            }
+        ],
+        "softwareList": [
+            {
+                "id": "odi-s1",
+                "title": "Website used to calculate the MAC Key for ODI",
+                "url": "http://www.ip33.com/md5.html",
+                "type": "software"
+            }
+        ],
+        "firmwareList": [
+            {
+                "id": "odi-f1",
+                "title": "Reposted Firmware (DFP-34X-2C2)",
+                "url": "https://github.com/Anime4000/RTL960x/tree/main/Firmware/DFP-34X-2C2",
+                "type": "firmware"
+            }
+        ]
+    },
+    {
+        "id": "volt",
+        "category": "Volt mini olt",
+        "name": "mini gpon olt SFP",
+        "imgSrc": "images/volt.jpg",
+        "buyUrl": "https://example.com/buy-volt",
+        "desc": "Mini GPON OLT SFP Module - Compact optical line terminal in SFP form factor, supporting ONU management and configuration.",
+        "specs": {
+            "Form Factor": "SFP",
+            "Type": "GPON OLT",
+            "Standard": "ITU-T G.984",
+            "Rate": "2.5Gbps Down / 1.25Gbps Up",
+            "Management": "VOLT Software",
+            "Power Supply": "3.3V"
+        },
+        "videoUrlList": [
+            {
+                "id": "volt-v1",
+                "title": "How to set ONU to router mode",
+                "url": "https://youtu.be/ckJvqJloSzg",
+                "type": "video"
+            },
+            {
+                "id": "volt-v2",
+                "title": "How to set ONU to bridge mode",
+                "url": "https://youtu.be/QFcUg1Ra1p0",
+                "type": "video"
+            },
+            {
+                "id": "volt-v3",
+                "title": "How to Install VOLT Software (Video)",
+                "url": "https://youtu.be/zTkDRKb20QM",
+                "type": "video"
+            }
+        ],
+        "softwareList": [
+            {
+                "id": "volt-s1",
+                "title": "For volt software",
+                "url": "https://mega.nz/folder/uopBTQYI#0XRXL0XkLRK3GAoaL8RVkQ",
+                "type": "software"
+            }
+        ],
+        "firmwareList": []
+    },
+    {
+        "id": "vsol",
+        "category": "Vsol ONU/Olt",
+        "name": "Vsol ONU/Olt",
+        "imgSrc": "images/vsol.jpg",
+        "buyUrl": "https://example.com/buy-vsol",
+        "desc": "Vsol ONU/OLT Series - V2801SG/V2801Q/V2802RH and OLT devices, comprehensive fiber access solutions for various deployment scenarios.",
+        "specs": {
+            "Series": "V2801SG / V2801Q / V2802RH",
+            "Type": "ONU / OLT",
+            "Standard": "GPON / EPON",
+            "Management": "Web UI / Telnet",
+            "Ports": "GE / FE / POTS",
+            "Power Supply": "12V DC"
+        },
+        "videoUrlList": [
+            {
+                "id": "vsol-v1",
+                "title": "Change SN and MAC address in web interface",
+                "url": "https://youtu.be/mH7NNXCYMK8",
+                "type": "video"
+            },
+            {
+                "id": "vsol-v2",
+                "title": "Login IP & Telnet Enable",
+                "url": "https://youtu.be/mHXsrBKqy3k",
+                "type": "video"
+            }
+        ],
+        "softwareList": [],
+        "firmwareList": []
+    }
 ]
