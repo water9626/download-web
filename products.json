@@ -4,7 +4,7 @@
         "category": "HW-ma5671A SFP ONU",
         "name": "MA5671A",
         "imgSrc": "images/ma5671a.jpg",
-        "buyUrl": "https://example.com/buy-ma5671a",
+        "buyUrl": "http://www.aliexpress.com/item/info/1005012617902508.html",
         "desc": "GPON SFP ONU Stick - High-performance GPON optical network unit in SFP form factor, compatible with major OLT vendors.",
         "specs": {
             "Form Factor": "SFP",
@@ -49,7 +49,7 @@
         "category": "ODI PONstick",
         "name": "ODI RTL9601d stick",
         "imgSrc": "images/odi.jpg",
-        "buyUrl": "https://example.com/buy-odi",
+        "buyUrl": "http://www.aliexpress.com/item/info/1005010557703959.html",
         "desc": "ODI RTL9601d PON Stick - Compact GPON/XPON SFP transceiver with built-in ONU functionality, ideal for router integration.",
         "specs": {
             "Form Factor": "SFP",
@@ -101,7 +101,7 @@
         "category": "Volt mini olt",
         "name": "mini gpon olt SFP",
         "imgSrc": "images/volt.jpg",
-        "buyUrl": "https://example.com/buy-volt",
+        "buyUrl": "http://www.aliexpress.com/item/info/1005012811263296.html",
         "desc": "Mini GPON OLT SFP Module - Compact optical line terminal in SFP form factor, supporting ONU management and configuration.",
         "specs": {
             "Form Factor": "SFP",
@@ -146,7 +146,7 @@
         "category": "Vsol ONU/Olt",
         "name": "Vsol ONU/Olt",
         "imgSrc": "images/vsol.jpg",
-        "buyUrl": "https://example.com/buy-vsol",
+        "buyUrl": "http://www.aliexpress.com/item/info/1005012082692754.html",
         "desc": "Vsol ONU/OLT Series - V2801SG/V2801Q/V2802RH and OLT devices, comprehensive fiber access solutions for various deployment scenarios.",
         "specs": {
             "Series": "V2801SG / V2801Q / V2802RH",
