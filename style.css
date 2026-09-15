@@ -112,7 +112,7 @@ header {
     font-size: 32px;
     letter-spacing: 1.2px;
     color: #000000;
-    /* 3D立体浮雕阴影，模拟图片圆润凸起效果 */
+    /* 3D立体浮雕阴影 */
     text-shadow:
         0.5px 0.5px 0 #222,
         1px 1px 0 rgba(0,0,0,0.2),
