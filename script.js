@@ -1,4 +1,4 @@
-// 页面切换
+// 页面切换（适配 index.html: products / support / contact）
 function switchView(viewId) {
     document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
     document.querySelectorAll('nav a').forEach(el => el.classList.remove('active'));
@@ -6,6 +6,7 @@ function switchView(viewId) {
     document.getElementById(`nav-${viewId}`).classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
 // 弹窗
 function openModal(productId) {
     const product = window.productsList.find(p => p.id === productId);
@@ -52,6 +53,7 @@ function closeModalOnOverlay(event) {
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeModal();
 });
+
 // 渲染产品
 function renderProducts(productList) {
     const grid = document.getElementById('product-grid');
@@ -76,6 +78,7 @@ function renderProducts(productList) {
         `
     }).join('');
 }
+
 // 搜索
 function applySearch() {
     const keyword = document.getElementById('product-search').value.toLowerCase();
@@ -89,6 +92,7 @@ function applySearch() {
     }
     renderProducts(filtered);
 }
+
 // 渲染支持页
 function renderSupportPage() {
     const grid = document.getElementById('support-grid');
@@ -130,6 +134,7 @@ function renderSupportPage() {
         return html;
     }).join('');
 }
+
 // 回到顶部
 window.addEventListener('scroll', () => {
     const btn = document.getElementById('backToTop');
@@ -139,6 +144,7 @@ window.addEventListener('scroll', () => {
         btn.classList.remove('visible');
     }
 });
+
 // 初始化：读取外部JSON
 async function init() {
     try {
