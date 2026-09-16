@@ -27,7 +27,12 @@
                 "url": "https://youtu.be/1uWbhbN80os",
                 "type": "video"
             },
-            
+            {
+                "id": "ma5671a-v3",
+                "title": "10G Xgspon 8311",
+                "url": "https://youtu.be/FBBT3GTuYtw",
+                "type": "video"
+            }
         ],
         "softwareList": [
             {
@@ -184,7 +189,7 @@
         "id": "8311",
         "category": "10G XGSPON ONU",
         "name": "8311 XGSPON Stick",
-        "imgSrc": "images/8311.png",
+        "imgSrc": "images/8311.jpg",
         "buyUrl": "http://www.aliexpress.com/item/info/【这里替换成你的8311商品链接】.html",
         "desc": "8311 XGSPON SFP ONU Stick, 10G symmetrical XGSPON optical network unit, high speed fiber access for router integration.",
         "specs": {
