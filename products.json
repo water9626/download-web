@@ -66,6 +66,10 @@
                 "url": "https://youtu.be/TD4QhAxm4R8",
                 "type": "video"
             },
+            {    "id": "odi-v4",
+                 "title": "ODI PON Stick GPON SN via Telnet",
+                 "url": "https://youtu.be/oFHdypmgmbw",
+                 "type": "video"             },
             {
                 "id": "odi-v2",
                 "title": "Reposted: Detailed ODI Setup Tutorial",
