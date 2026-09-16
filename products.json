@@ -27,6 +27,12 @@
                 "url": "https://youtu.be/1uWbhbN80os",
                 "type": "video"
             },
+            {
+                "id": "ma5671a-v3",
+                "title": "10G Xgspon 8311",
+                "url": "https://youtu.be/FBBT3GTuYtw",
+                "type": "video"
+            }
         ],
         "softwareList": [
             {
@@ -171,36 +177,6 @@
                 "url": "https://youtu.be/mHXsrBKqy3k",
                 "type": "video"
             }
-        ],
-        "softwareList": [],
-        "firmwareList": []
-    }
-    {
-        "id": "Xgspon",
-        "category": "XGSPON",
-        "name": "10G XGSPON-8311",
-        "imgSrc": "images/8311.png",
-        "buyUrl": "",
-        "desc": "- Chipset: Maxlinear PRX126, supports XGS-PON / XG-PON, **NOT compatible with GPON ,
-         -PON Rate: 9.953Gbps symmetric
-         - Wavelength: Tx 1270nm / Rx 1577nm, single-mode fiber, max reach 20km
-         - Fiber Connector: SC/APC (standard), SC/UPC optional",
-        "specs": {
-            "Series": "XGSPON-8311",
-            "Type": "ONU",
-            "Standard": "10G-GPON / EPON",
-            "Management": "Web UI / Telnet",
-            "Ports": "10G / GE / POTS",
-            "Power Supply": "3.3V DC"
-        },
-        "videoUrlList": [
-            {
-                "id": "8311",
-                "title": "10G Xgspon 8311",
-                "url": "https://youtu.be/FBBT3GTuYtw",
-                "type": "video"
-            }
-            
         ],
         "softwareList": [],
         "firmwareList": []
