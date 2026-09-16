@@ -1,92 +1,350 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fibershow - Optical Networking Products & Downloads</title>
-    <meta name="description" content="Fibershow provides high-performance optical networking equipment, GPON SFP ONU sticks, OLT modules, firmware, software tools and technical documentation." />
-    <meta name="keywords" content="GPON, SFP ONU, OLT, optical network, fiber optic, MA5671A, ODI, VOLT, Vsol" />
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibershow | Fiber Communication Products</title>
+    <!-- 免费商用无版权字体 Nunito，圆润粗体，更贴近logo圆润笔画，Google Font开源可商用 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff2020;
+            --text-main: #1f2937;
+            --text-secondary: #4b5563;
+            --bg-page: #ffffff;
+            --bg-card: #f8fafc;
+            --border-color: #e2e8f0;
+            --shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body{
+            font-family: "Open Sans", system-ui, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            overflow-x:hidden;
+        }
+        /* 光纤动态背景线条 */
+        .bg-fiber-lines{
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            z-index:-1;
+            opacity:0.08;
+        }
+        .fiber-line{
+            position:absolute;
+            background:linear-gradient(90deg,#3b82f6,var(--primary));
+            height:1px;
+            animation: fiberMove 14s linear infinite;
+        }
+        @keyframes fiberMove{
+            0%{transform:translateX(-120%);}
+            100%{transform:translateX(120%);}
+        }
+        /* 顶部导航栏 */
+        header{
+            display:grid;
+            grid-template-columns: auto 1fr 280px;
+            align-items:center;
+            padding:18px 40px;
+            border-bottom:1px solid var(--border-color);
+            background:#fff;
+            position:sticky;
+            top:0;
+            z-index:99;
+        }
+        /* ========== 【新版LOGO 匹配参考图片】 ========== */
+        .logo {
+            display: inline-block;
+            font-family: "Nunito", "Arial Rounded MT Bold", "Helvetica Rounded", sans-serif;
+            font-weight: 900;
+            font-size: 40px;
+            line-height: 1;
+            letter-spacing: -0.5px;
+            transform: skewX(-5deg);
+            color: #000000;
+            text-decoration: none;
+            cursor: pointer;
+            /* 柔和底部弥散阴影，去掉硬台阶 */
+            text-shadow: 0 6px 8px rgba(0,0,0,0.32);
+            transition: transform 0.22s ease;
+        }
+        .logo span {
+            color: #ff2020;
+            /* 红色文字增加淡淡的红色外发光，还原原图红色光晕效果 */
+            text-shadow: 
+                0 6px 8px rgba(0,0,0,0.32),
+                0 0 10px rgba(255,32,32,0.25);
+        }
+        .logo:hover{
+            transform: skewX(-5deg) translateY(-2px);
+        }
+        nav{
+            display:flex;
+            justify-content:center;
+            gap:36px;
+        }
+        nav a{
+            text-decoration:none;
+            color:var(--text-secondary);
+            font-weight:500;
+            font-size:16px;
+            transition:color 0.2s;
+        }
+        nav a.active,nav a:hover{
+            color:var(--primary);
+        }
+        .search-bar{
+            width:100%;
+            padding:9px 14px;
+            border:1px solid var(--border-color);
+            border-radius:8px;
+            font-size:15px;
+        }
+        .container{
+            max-width:1400px;
+            margin:0 auto;
+            padding:40px;
+        }
+        .section-title{
+            font-size:28px;
+            margin-bottom:32px;
+            color:var(--text-main);
+        }
+        /* 产品卡片 */
+        .product-grid{
+            display:grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+            gap:26px;
+        }
+        .product-card{
+            background:var(--bg-card);
+            border:1px solid var(--border-color);
+            border-radius:14px;
+            overflow:hidden;
+            box-shadow:var(--shadow);
+            transition: all 0.25s ease;
+        }
+        .product-card:hover{
+            transform:translateY(-4px);
+            box-shadow:0 8px 24px rgba(0,0,0,0.12);
+        }
+        .product-card img{
+            width:100%;
+            height:200px;
+            object-fit:contain;
+            padding:16px;
+            background:#fff;
+        }
+        .product-card-body{
+            padding:20px;
+        }
+        .product-card h3{
+            font-size:18px;
+            margin-bottom:10px;
+        }
+        .product-card p{
+            color:var(--text-secondary);
+            font-size:14px;
+            line-height:1.6;
+            margin-bottom:16px;
+        }
+        .btn{
+            display:inline-block;
+            padding:10px 18px;
+            border-radius:8px;
+            text-decoration:none;
+            font-weight:600;
+            font-size:14px;
+            cursor:pointer;
+        }
+        .btn-detail{
+            background:#eef2ff;
+            color:#2563eb;
+            border:none;
+            margin-right:8px;
+        }
+        .btn-buy{
+            background:var(--primary);
+            color:#fff;
+            border:none;
+        }
+        /* 弹窗样式 仅展示产品文字详情，无下载链接 */
+        .modal-overlay{
+            position:fixed;
+            inset:0;
+            background:rgba(0,0,0,0.45);
+            display:none;
+            align-items:center;
+            justify-content:center;
+            z-index:1000;
+        }
+        .modal{
+            background:#fff;
+            width:min(90%,700px);
+            border-radius:16px;
+            padding:32px;
+            box-shadow:0 10px 40px rgba(0,0,0,0.15);
+        }
+        .modal-close{
+            float:right;
+            border:none;
+            background:transparent;
+            font-size:26px;
+            cursor:pointer;
+            color:#666;
+        }
+        .modal h2{
+            margin-bottom:16px;
+        }
+        .modal p{
+            line-height:1.7;
+            color:var(--text-secondary);
+        }
+        /* 页面切换视图 */
+        .view{
+            display:none;
+        }
+        .view.active{
+            display:block;
+        }
+        /* 响应式适配 */
+        @media (max-width:1100px){
+            header{
+                grid-template-columns:1fr;
+                gap:16px;
+                padding:16px 24px;
+            }
+            .logo{
+                text-align:center;
+                font-size:36px;
+            }
+            nav{
+                gap:24px;
+            }
+        }
+        @media (max-width:768px){
+            .logo{
+                font-size:32px;
+            }
+            .container{
+                padding:24px 16px;
+            }
+            nav{
+                gap:16px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="fiber-bg">
-        <div class="fiber-line line-1"></div>
-        <div class="fiber-line line-2"></div>
-        <div class="fiber-line line-3"></div>
-        <div class="fiber-line line-4"></div>
-        <div class="fiber-line line-5"></div>
-        <div class="fiber-line line-6"></div>
-        <div class="flash-dot dot-1"></div>
-        <div class="flash-dot dot-2"></div>
-        <div class="flash-dot dot-3"></div>
-        <div class="flash-dot dot-4"></div>
-        <div class="flash-dot dot-5"></div>
-        <div class="flash-dot dot-6"></div>
-        <div class="flash-dot dot-7"></div>
-        <div class="flash-dot dot-8"></div>
-    </div>
+    <!-- 动态光纤背景 -->
+    <div class="bg-fiber-lines" id="fiberBg"></div>
     <header>
-        <div class="logo">Fiber<span>Show</span></div>
+        <a href="#" class="logo">Fiber<span>Show</span></a>
         <nav>
             <a onclick="switchView('products')" id="nav-products" class="active">Products</a>
             <a onclick="switchView('support')" id="nav-support">Support & Download</a>
             <a onclick="switchView('contact')" id="nav-contact">Contact Us</a>
         </nav>
-        <div class="header-search-wrap">
-            <input type="text" id="product-search" class="search-bar" placeholder="Search products..." />
+        <div>
+            <input type="text" class="search-bar" placeholder="Search products...">
         </div>
     </header>
-    <main>
-        <section id="view-products" class="view-section active">
-            <div class="page-title-block">
-                <h1>Products</h1>
-                <p>Professional GPON SFP ONU sticks, OLT modules and optical transceivers. Download firmware, software tools and technical documentation for your devices.</p>
-            </div>
-            <div id="product-grid" class="product-grid"></div>
-        </section>
-        <section id="view-support" class="view-section">
-            <div class="page-title-block">
-                <h1>Support & Downloads</h1>
-                <p>Access firmware updates, drivers, manuals, and technical documentation for your devices.</p>
-            </div>
-            <div id="support-grid" class="support-grid"></div>
-        </section>
-        <section id="view-contact" class="view-section">
-            <div class="page-title-block">
-                <h1>Contact Us</h1>
-                <p>For business inquiries, technical support, or after-sales service, please reach out through the following channels.</p>
-            </div>
-            <div class="contact-container">
-                <div class="contact-block">
-                    <h3>Technical Support</h3>
-                    <p>Email: <a href="mailto:1154246242@qq.com">1154246242@qq.com</a></p>
+    <main class="container">
+        <!-- 产品页面 -->
+        <div id="products" class="view active">
+            <h2 class="section-title">Fiber Communication Products</h2>
+            <div class="product-grid">
+                <!-- 产品1，图片调用image文件夹内图片 -->
+                <div class="product-card">
+                    <img src="image/sfp-plus-transceiver.png" alt="SFP+ Transceiver">
+                    <div class="product-card-body">
+                        <h3>10G SFP+ Transceiver</h3>
+                        <p>10G fiber optical module, compatible with major brand switches, stable transmission.</p>
+                        <button class="btn btn-detail" onclick="openModal('10G SFP+ Transceiver','High performance 10G SFP+ optical transceiver, single mode / multimode optional, low power consumption, industrial grade stability, widely used in fiber communication, data center.')">View Details</button>
+                        <a href="https://your-buy-link.com" target="_blank" class="btn btn-buy">Buy Now</a>
+                    </div>
                 </div>
-                <div class="contact-block">
-                    <h3>Business & Sales</h3>
-                    <p>Email: <a href="mailto:896884964@qq.com">896884964@qq.com</a></p>
-                    <p>WhatsApp: water9626</p>
-                    <p>Working hours: Mon-Fri, 9:00 AM - 6:00 PM (UTC+8)</p>
+                <!-- 产品2 -->
+                <div class="product-card">
+                    <img src="image/fiber-media-converter.png" alt="Fiber Media Converter">
+                    <div class="product-card-body">
+                        <h3>4 Port 2.5G + 2SFP+ Media Converter</h3>
+                        <p>2.5G Ethernet port + 10G SFP+ slot, fiber media converter for FTTH & enterprise network.</p>
+                        <button class="btn btn-detail" onclick="openModal('4 Port 2.5G + 2SFP+ Media Converter','Enterprise grade fiber media converter, 4*2.5G copper port + 2*10G SFP+ slot, support auto negotiation, suitable for campus network, broadband access.')">View Details</button>
+                        <a href="https://your-buy-link.com" target="_blank" class="btn btn-buy">Buy Now</a>
+                    </div>
+                </div>
+                <!-- 产品3 -->
+                <div class="product-card">
+                    <img src="image/ma5671a.png" alt="MA5671A ONU">
+                    <div class="product-card-body">
+                        <h3>MA5671A GPON ONU</h3>
+                        <p>High stability GPON ONU, widely used for fiber broadband access, support bridge mode.</p>
+                        <button class="btn btn-detail" onclick="openModal('MA5671A GPON ONU','MA5671A GPON terminal, reliable receiving sensitivity, support bridge mode, for home and small business fiber access.')">View Details</button>
+                        <a href="https://your-buy-link.com" target="_blank" class="btn btn-buy">Buy Now</a>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+        <!-- Support & Download -->
+        <div id="support" class="view">
+            <h2 class="section-title">Support & Download</h2>
+            <p style="margin-bottom:20px;">Technical documents, firmware and user manuals for Fibershow products.</p>
+        </div>
+        <!-- Contact -->
+        <div id="contact" class="view">
+            <h2 class="section-title">Contact Us</h2>
+            <p>Email: contact@fibershow.com</p>
+            <p>WhatsApp: +86 13800138000</p>
+        </div>
     </main>
-    <div class="modal-overlay" id="product-modal" onclick="closeModalOnOverlay(event)">
+    <!-- 产品详情弹窗（纯文字，无下载链接） -->
+    <div class="modal-overlay" id="modalOverlay">
         <div class="modal">
-            <div class="modal-header">
-                <div>
-                    <h2 id="modal-title"></h2>
-                    <span class="modal-category" id="modal-category"></span>
-                </div>
-                <button class="modal-close" onclick="closeModal()">✕</button>
-            </div>
-            <div class="modal-body" id="modal-body"></div>
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2 id="modalTitle"></h2>
+            <p id="modalContent"></p>
         </div>
     </div>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <footer>
-        <p>&copy; 2026 Fibershow. All rights reserved.</p>
-        <p>Disclaimer: The information on this website is for general informational purposes only. Product specifications and downloads are subject to change without notice.</p>
-    </footer>
-    <script src="script.js"></script>
+    <script>
+        // 生成光纤背景线条
+        const fiberBg = document.getElementById('fiberBg');
+        for(let i=0;i<6;i++){
+            const line = document.createElement('div');
+            line.className = 'fiber-line';
+            line.style.top = `${Math.random()*100}%`;
+            line.style.width = `${Math.random()*400+200}px`;
+            line.style.animationDelay = `${Math.random()*6}s`;
+            fiberBg.appendChild(line);
+        }
+        // 页面切换
+        function switchView(id){
+            document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+            document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            document.getElementById('nav-'+id).classList.add('active');
+        }
+        // 弹窗控制
+        function openModal(title,content){
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalContent').innerText = content;
+            document.getElementById('modalOverlay').style.display = 'flex';
+        }
+        function closeModal(){
+            document.getElementById('modalOverlay').style.display = 'none';
+        }
+        document.getElementById('modalOverlay').addEventListener('click',function(e){
+            if(e.target === this) closeModal();
+        })
+    </script>
 </body>
 </html>
