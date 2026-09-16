@@ -190,14 +190,14 @@
         "category": "10G XGSPON ONU",
         "name": "8311 XGSPON Stick",
         "imgSrc": "images/8311.png",
-        "buyUrl": "http://www.aliexpress.com/item/info/【这里替换成你的8311商品链接】.html",
+        "buyUrl": "http://www.aliexpress.com/item/info/1005009258552370.html",
         "desc": "8311 XGSPON SFP ONU Stick, 10G symmetrical XGSPON optical network unit, high speed fiber access for router integration.",
         "specs": {
             "Form Factor": "SFP",
             "Standard": "ITU-T G.9807 XGSPON",
             "Rate": "10Gbps Down / 10Gbps Up",
             "Wavelength": "Tx 1270nm / Rx 1577nm",
-            "Interface": "SFP 2x10",
+            "Interface": "SFP+",
             "Power Supply": "3.3V"
         },
         "videoUrlList": [
