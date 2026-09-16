@@ -107,44 +107,27 @@ header {
     z-index: 1000;
 }
 /* ========== 修改后的LOGO样式 ========== */
-/* ========== 图片同款文字LOGO：圆润粗体 + 黑红分色 + 3D阴影 ========== */
-
 .logo {
     display: inline-block;
-    font-family: "Comic Sans MS", "Chalkboard SE", "Marker Felt", "Arial Rounded MT Bold", system-ui, sans-serif;
-    font-weight: 900;
-    font-size: 42px;
-    line-height: 1;
-    letter-spacing: -1px;
-    transform: skewX(-8deg);
-    color: #000000;
     cursor: pointer;
-    text-decoration: none;
-
-    /* 底层深色投影 */
-    text-shadow:
-        0px 3px 0px #000000,
-        0px 6px 6px rgba(0, 0, 0, 0.35),
-        0px 10px 12px rgba(0, 0, 0, 0.25);
-
-    transition: transform 0.25s ease;
+}
+.logo img {
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.3));
+    transition: transform 0.22s ease;
+}
+.logo:hover img {
+    transform: translateY(-2px);
+}
+/* 移动端适配，手机缩小LOGO高度 */
+@media (max-width:768px){
+    .logo img {
+        height:36px;
+    }
 }
 
-/* show 红色部分 */
-.logo span {
-    color: #ff0b14;
-
-    /* 红色文字底部增加红色反光阴影 */
-    text-shadow:
-        0px 2px 0px #ff0b14,
-        0px 4px 4px rgba(255, 11, 20, 0.35),
-        0px 8px 10px rgba(255, 11, 20, 0.25);
-}
-
-/* 鼠标悬浮：整体上浮，模拟3D抬起 */
-.logo:hover {
-    transform: skewX(-8deg) translateY(-3px);
-}
 
 /* ===================================== */
 nav { display: flex; justify-content: center; gap: 32px; }
