@@ -70,6 +70,10 @@
                  "title": "Telnet ODI PON Stick GPON SN via Telnet",
                  "url": "https://youtu.be/oFHdypmgmbw",
                  "type": "video"             },
+           {    "id": "odi-v5",
+                "title": "Telnet ODI PON Stick flash set MAC_KEY",
+                "url": "https://youtu.be/cIkgr05X_XY",
+                "type": "video"             },
             {
                 "id": "odi-v2",
                 "title": "Reposted: Detailed ODI Setup Tutorial",
