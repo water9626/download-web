@@ -8,7 +8,6 @@
     <meta name="keywords" content="GPON, SFP ONU, OLT, optical network, fiber optic, MA5671A, ODI, VOLT, Vsol" />
     <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
     <div class="fiber-bg">
         <div class="fiber-line line-1"></div>
@@ -26,22 +25,19 @@
         <div class="flash-dot dot-7"></div>
         <div class="flash-dot dot-8"></div>
     </div>
-
-   <header>
-    <a href="#" class="logo">
-        <img src="images/fibershow.png" alt="Fibershow Logo">
-    </a>
-    <nav>
-        <a onclick="switchView('products')" id="nav-products" class="active">Products</a>
-        <a onclick="switchView('support')" id="nav-support">Support & Download</a>
-        <a onclick="switchView('contact')" id="nav-contact">Contact Us</a>
-    </nav>
-    <div class="header-search-wrap">
-        <input type="text" id="product-search" class="search-bar" placeholder="Search products..." />
-    </div>
-</header>
-
-
+    <header>
+        <a href="#" class="logo">
+            <img src="images/fibershow.png" alt="Fibershow Logo">
+        </a>
+        <nav>
+            <a onclick="switchView('products')" id="nav-products" class="active">Products</a>
+            <a onclick="switchView('support')" id="nav-support">Support & Download</a>
+            <a onclick="switchView('contact')" id="nav-contact">Contact Us</a>
+        </nav>
+        <div class="header-search-wrap">
+            <input type="text" id="product-search" class="search-bar" placeholder="Search products..." />
+        </div>
+    </header>
     <main>
         <section id="view-products" class="view-section active">
             <div class="page-title-block">
@@ -50,7 +46,6 @@
             </div>
             <div id="product-grid" class="product-grid"></div>
         </section>
-
         <section id="view-support" class="view-section">
             <div class="page-title-block">
                 <h1>Support & Downloads</h1>
@@ -58,7 +53,6 @@
             </div>
             <div id="support-grid" class="support-grid"></div>
         </section>
-
         <section id="view-contact" class="view-section">
             <div class="page-title-block">
                 <h1>Contact Us</h1>
@@ -78,7 +72,6 @@
             </div>
         </section>
     </main>
-
     <div class="modal-overlay" id="product-modal" onclick="closeModalOnOverlay(event)">
         <div class="modal">
             <div class="modal-header">
@@ -91,14 +84,11 @@
             <div class="modal-body" id="modal-body"></div>
         </div>
     </div>
-
     <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-
     <footer>
         <p>&copy; 2026 Fibershow. All rights reserved.</p>
         <p>Disclaimer: The information on this website is for general informational purposes only. Product specifications and downloads are subject to change without notice.</p>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
