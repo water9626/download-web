@@ -52,7 +52,8 @@ content:
             type: string
       - name: videoUrlList
         label: 视频列表
-        type: list
+        type: object
+        list: true
         fields:
           - name: id
             label: 视频ID
