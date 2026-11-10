@@ -50,6 +50,21 @@ content:
           - name: Power Supply
             label: 供电
             type: string
+          - name: Chipset
+            label: 芯片
+            type: string
+          - name: Management
+            label: 管理方式
+            type: string
+          - name: Type
+            label: 类型
+            type: string
+          - name: Series
+            label: 系列
+            type: string
+          - name: Ports
+            label: 端口
+            type: string
       - name: videoUrlList
         label: 视频列表
         type: object
@@ -67,23 +82,37 @@ content:
           - name: type
             label: 类型
             type: string
-      - name: downloadList
-        label: 软件/固件下载
+      - name: softwareList
+        label: 软件/工具
         type: object
         list: true
         fields:
           - name: id
-            label: 下载项ID
+            label: ID
             type: string
           - name: title
-            label: 文件名
-            type: string
-          - name: version
-            label: 版本号
+            label: 标题
             type: string
           - name: url
-            label: 下载链接
+            label: 链接
             type: string
-          - name: note
-            label: 备注说明
-            type: text
+          - name: type
+            label: 类型
+            type: string
+      - name: firmwareList
+        label: 固件
+        type: object
+        list: true
+        fields:
+          - name: id
+            label: ID
+            type: string
+          - name: title
+            label: 标题
+            type: string
+          - name: url
+            label: 链接
+            type: string
+          - name: type
+            label: 类型
+            type: string
