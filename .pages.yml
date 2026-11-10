@@ -67,3 +67,23 @@ content:
           - name: type
             label: 类型
             type: string
+      - name: downloadList
+        label: 软件/固件下载
+        type: object
+        list: true
+        fields:
+          - name: id
+            label: 下载项ID
+            type: string
+          - name: title
+            label: 文件名
+            type: string
+          - name: version
+            label: 版本号
+            type: string
+          - name: url
+            label: 下载链接
+            type: string
+          - name: note
+            label: 备注说明
+            type: text
