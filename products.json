@@ -206,12 +206,5 @@
         "type": "video"
       }
     ]
-  },
-  {
-    "id": "test",
-    "category": "SFP",
-    "name": "SFP-7",
-    "imgSrc": "/images/2.5G电口.jpg",
-    "desc": "SFP   "
   }
 ]
