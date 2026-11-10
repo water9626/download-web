@@ -1,0 +1,68 @@
+media:
+  input: images
+  output: /images
+
+content:
+  - name: products
+    label: 产品列表
+    type: file
+    path: products.json
+    format: json
+    list: true
+    fields:
+      - name: id
+        label: ID
+        type: string
+      - name: category
+        label: 分类
+        type: string
+      - name: name
+        label: 产品名称
+        type: string
+      - name: imgSrc
+        label: 图片路径
+        type: image
+      - name: buyUrl
+        label: 购买链接
+        type: string
+      - name: desc
+        label: 产品描述
+        type: text
+      - name: specs
+        label: 参数
+        type: object
+        fields:
+          - name: Form Factor
+            label: 封装
+            type: string
+          - name: Standard
+            label: 标准
+            type: string
+          - name: Rate
+            label: 速率
+            type: string
+          - name: Wavelength
+            label: 波长
+            type: string
+          - name: Interface
+            label: 接口
+            type: string
+          - name: Power Supply
+            label: 供电
+            type: string
+      - name: videoUrlList
+        label: 视频列表
+        type: list
+        fields:
+          - name: id
+            label: 视频ID
+            type: string
+          - name: title
+            label: 视频标题
+            type: string
+          - name: url
+            label: 视频链接
+            type: string
+          - name: type
+            label: 类型
+            type: string
