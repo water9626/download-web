@@ -1,55 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support & Download - Fibershow</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <a href="index.html" class="logo">FIBERSHOW</a>
-        <nav>
-            <ul>
-                <li><a href="index.html">Products</a></li>
-                <li><a href="support.html" class="active">Support & Download</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-        </nav>
-        <div class="search-container" style="visibility: hidden;">
-            <input type="text" placeholder="Search...">
-        </div>
-    </header>
+<script>
+async function loadProducts() {
+  const res = await fetch('/products.json');
+  const allProducts = await res.json();
+  const wrap = document.getElementById('container');
 
-    <main>
-        <h1 class="page-title">Support & Download</h1>
-        <p class="page-desc">Access firmware updates, drivers, manuals, and technical documentation.</p>
+  if (!wrap) return;
 
-        <div class="content-block">
-            <h3>Latest Firmware</h3>
-            <p>Check for the latest firmware versions to ensure optimal performance and security for your device.</p>
-            <ul>
-                <li>MA5671A Series Firmware v2.4.1 (Released Sep 2026)</li>
-                <li>H1s-3/H2-3 GPON Series Firmware v5.1.0 (Released Aug 2026)</li>
-            </ul>
-        </div>
+  allProducts.forEach(product => {
+    let html = `
+      <div class="product-card" style="border:1px solid #eee;padding:20px;margin:16px 0;border-radius:8px;">
+        <h2>${product.name}</h2>
+        <p>${product.desc}</p>
+        <h3>Videos / Tutorials</h3>
+        <ul>
+    `;
 
-        <div class="content-block">
-            <h3>Drivers & Utilities</h3>
-            <p>Necessary drivers and configuration tools for Windows, macOS, and Linux.</p>
-        </div>
-        
-        <div class="content-block">
-            <h3>User Manuals & Datasheets</h3>
-            <p>Download complete technical documentation, installation guides, and API references.</p>
-        </div>
-    </main>
+    // 视频列表
+    if (product.videoUrlList && Array.isArray(product.videoUrlList)) {
+      product.videoUrlList.forEach(v => {
+        html += `<li><a href="${v.url}" target="_blank">${v.title}</a></li>`;
+      });
+    }
 
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2026 Fibershow. All rights reserved.</p>
-            <p class="disclaimer">Disclaimer: The information provided on this website is for general informational and educational purposes only. All product specifications and downloads are subject to change without notice. Use of this information and downloaded files is at your own risk.</p>
-        </div>
-    </footer>
-</body>
-</html>
+    html += `</ul>`;
+
+    // 软件 / 工具
+    if (product.softwareList && Array.isArray(product.softwareList) && product.softwareList.length > 0) {
+      html += `<h3>Software / Tools</h3><ul>`;
+      product.softwareList.forEach(s => {
+        html += `<li><a href="${s.url}" target="_blank">${s.title}</a></li>`;
+      });
+      html += `</ul>`;
+    }
+
+    // 固件
+    if (product.firmwareList && Array.isArray(product.firmwareList) && product.firmwareList.length > 0) {
+      html += `<h3>Firmware</h3><ul>`;
+      product.firmwareList.forEach(f => {
+        html += `<li><a href="${f.url}" target="_blank">${f.title}</a></li>`;
+      });
+      html += `</ul>`;
+    }
+
+    html += `</div>`;
+    wrap.innerHTML += html;
+  });
+}
+
+loadProducts();
+</script>
