@@ -1,3 +1,14 @@
+// 自动判断基础路径，适配 GitHub Pages / Cloudflare Pages
+function getBasePath(){
+  const host = location.hostname;
+  const path = location.pathname;
+  if(host.endsWith("github.io") && path.includes("/download-web/")){
+    return "/download-web/";
+  }
+  return "/";
+}
+const base = getBasePath();
+
 // 页面切换（适配 index.html: products / support / contact）
 function switchView(viewId) {
     document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
@@ -62,10 +73,11 @@ function renderProducts(productList) {
         return;
     }
     grid.innerHTML = productList.map(product => {
+        const imgUrl = base + product.imgSrc;
         return `
         <div class="card">
             <div class="card-img-wrap">
-                <img src="${product.imgSrc}" alt="${product.name}">
+                <img src="${imgUrl}" alt="${product.name}">
             </div>
             <span class="category">${product.category}</span>
             <h2>${product.name}</h2>
@@ -148,7 +160,8 @@ window.addEventListener('scroll', () => {
 // 初始化：读取外部JSON
 async function init() {
     try {
-        const res = await fetch("products.json");
+        // json 地址也拼 base，github.io 子目录才能正常加载json
+        const res = await fetch(`${base}products.json`);
         window.productsList = await res.json();
         renderProducts(window.productsList);
         renderSupportPage();
