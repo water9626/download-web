@@ -89,8 +89,8 @@
     "softwareList": [
       {
         "id": "odi-s1",
-        "title": "Website used to calculate the MAC Key for ODI",
-        "url": "http://www.ip33.com/md5.html",
+        "title": "Website used to calculate the MAC Key for ODI-md5hashgenerator",
+        "url": "https://www.md5hashgenerator.com/",
         "type": "software"
       }
     ],
